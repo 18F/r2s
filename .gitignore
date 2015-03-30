@@ -1,0 +1,10 @@
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
+packages/
+
+R2S.Api/bin/
+R2S.Api/obj/
+R2S.Api/deploy/
