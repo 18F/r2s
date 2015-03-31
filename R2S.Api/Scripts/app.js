@@ -1,4 +1,4 @@
-/*
+﻿/*
  * App.js
  */
 
@@ -36,6 +36,9 @@ var App = (function () {
       break;
     case 'orders':
       ordersController();
+      break;
+    case 'advertisements':
+      advertisementsController();
       break;
     default:
       // Set a default case
@@ -93,7 +96,17 @@ var App = (function () {
       hidePartial('orders-hard-hold');
       $('#request-orders-link').show();
     }
-  }
+  };
+
+  var advertisementsController = function () {
+    $.getJSON("/Advertisements", function (data) {
+      var html = "";
+      $.each(data, function (i, val) {
+        html += "<h2>" + val.Title + "</h2>" + "<p>" + val.Description + "</p>";
+      });
+      $('#advertisement-list').html("<pre><code>" + JSON.stringify(data) + "</code></pre>" + html);
+    });
+  };
   
   // Public Methods
   ///////////////////////////
