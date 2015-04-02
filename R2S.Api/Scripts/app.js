@@ -37,6 +37,9 @@ var App = (function () {
     case 'orders':
       ordersController();
       break;
+    case 'view-orders':
+      viewOrdersController();
+      break;
     case 'advertisements':
       advertisementsController();
       break;
@@ -96,6 +99,16 @@ var App = (function () {
       hidePartial('orders-hard-hold');
       $('#request-orders-link').show();
     }
+  };
+
+  var viewOrdersController = function () {
+    $.getJSON("/Orders", function (data) {
+      var html = "";
+      $.each(data, function (i, val) {
+        html += "<h2>" + val.Title + "</h2>" + "<p>" + val.Description + "</p>";
+      });
+      $('#orders-list').html("<pre><code>" + JSON.stringify(data) + "</code></pre>" + html);
+    });
   };
 
   var advertisementsController = function () {
