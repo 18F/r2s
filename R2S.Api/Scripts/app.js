@@ -187,7 +187,7 @@ var App = (function () {
   // Read hash from URL, show current view
   var hash = window.location.hash.replace('#', '');
   if (hash == '') {
-    $('#login').show();
+    showView('home');
   } else {
     showView(hash);
   }
