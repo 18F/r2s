@@ -382,42 +382,42 @@ span.text-space {
 }
 
 .home-button .icon.orders {
-  background: url(/Content/Images/orders.png);
+  background: url(../img/orders.png);
   background-size: 50px 65px;
   background-repeat: no-repeat;
   background-position: center 18px;
 }
 
 .home-button .icon.drilling {
-  background: url(/Content/Images/drilling.png);
+  background: url(../img/drilling.png);
   background-size: 50px 66px;
   background-repeat: no-repeat;
   background-position: center 18px;
 }
 
 .home-button .icon.medical {
-  background: url(/Content/Images/medical.png);
+  background: url(../img/medical.png);
   background-size: 60px 60px;
   background-repeat: no-repeat;
   background-position: center 18px;
 }
 
 .home-button .icon.messaging {
-  background: url(/Content/Images/messaging.png);
+  background: url(../img/messaging.png);
   background-size: 66px 37px;
   background-repeat: no-repeat;
   background-position: center 30px;
 }
 
 .home-button .icon.locator {
-  background: url(/Content/Images/locator.png);
+  background: url(../img/locator.png);
   background-size: 52px 70px;
   background-repeat: no-repeat;
   background-position: center 14px;
 }
 
 .home-button .icon.settings {
-  background: url(/Content/Images/settings.png);
+  background: url(../img/settings.png);
   background-size: 78px 54px;
   background-repeat: no-repeat;
   background-position: center 20px;

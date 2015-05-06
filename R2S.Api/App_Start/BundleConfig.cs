@@ -8,6 +8,7 @@ namespace R2S.Api
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            /* 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -24,7 +25,7 @@ namespace R2S.Api
                       "~/Content/sweet-alert.css",
                       "~/Content/main.css"));
 
-            /* Example `StyleBundle`:
+            // Example `StyleBundle`:
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));

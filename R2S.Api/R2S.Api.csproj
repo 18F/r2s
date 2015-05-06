@@ -129,32 +129,25 @@
     <Compile Include="Utilities\DodPkiCertificateParser.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Images\apple-touch-icon.png" />
-    <Content Include="Content\Images\drilling.png" />
-    <Content Include="Content\Images\favicon.png" />
-    <Content Include="Content\Images\locator.png" />
-    <Content Include="Content\Images\logo.png" />
-    <Content Include="Content\Images\medical.png" />
-    <Content Include="Content\Images\messaging.png" />
-    <Content Include="Content\Images\orders.png" />
-    <Content Include="Content\Images\settings.png" />
-    <Content Include="Content\main.css" />
-    <Content Include="Content\normalize.css" />
-    <Content Include="Content\sweet-alert.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="Content\img\apple-touch-icon.png" />
+    <Content Include="Content\img\drilling.png" />
+    <Content Include="Content\img\favicon.png" />
+    <Content Include="Content\img\locator.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\medical.png" />
+    <Content Include="Content\img\messaging.png" />
+    <Content Include="Content\img\orders.png" />
+    <Content Include="Content\img\settings.png" />
+    <Content Include="Content\js\jquery-2.1.4.min.js" />
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\normalize.css" />
+    <Content Include="Content\css\sweet-alert.css" />
     <Content Include="Global.asax" />
+    <Content Include="index.html" />
     <None Include="Properties\PublishProfiles\NRH.pubxml" />
-    <Content Include="Scripts\app.js" />
-    <Content Include="Scripts\fastclick.js" />
-    <Content Include="Scripts\jquery-2.1.3.js" />
-    <Content Include="Scripts\jquery-2.1.3.min.js" />
-    <Content Include="Scripts\jquery-2.1.3.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\sweet-alert.min.js" />
+    <Content Include="Content\js\app.js" />
+    <Content Include="Content\js\fastclick.js" />
+    <Content Include="Content\js\sweet-alert.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -167,7 +160,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Advertisements\Index.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
