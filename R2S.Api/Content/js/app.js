@@ -20,6 +20,7 @@ var App = (function () {
    * Hides all views.
    */
   var hideViews = function () {
+    hideMobileMenu();
     $('.view').hide();
   };
   
@@ -48,8 +49,8 @@ var App = (function () {
     }
     
     $('#' + view).show();
-    window.location.hash = view;
     window.scrollTo(0, 0);
+    history.pushState({}, "", "#" + view);
   };
   
   /*
@@ -131,6 +132,11 @@ var App = (function () {
   
   // Init
   ///////////////////////////
+  
+  // When the hash fragment changes
+  $(window).on('hashchange', function(e) {
+    showView(window.location.hash.slice(1));
+  });
   
   // Set button bindings
   
