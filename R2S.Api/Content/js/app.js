@@ -156,7 +156,8 @@ var App = (function () {
           html += "</tr>";
       });
       html += "</table>";
-      $('#advertisement-list').html("<pre><code>" + JSON.stringify(data) + "</code></pre>" + html);
+//      $('#advertisement-list').html("<pre><code>" + JSON.stringify(data) + "</code></pre>" + html);
+      $('#advertisement-list').html(html);
     });
   };
   
