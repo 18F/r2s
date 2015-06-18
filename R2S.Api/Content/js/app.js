@@ -141,8 +141,17 @@ var App = (function () {
           html += "<td>" + val.RankRange + "</td>";
           html += "<td>" + val.QualificationSummary + "</td>";
           html += "<td>" + val.MissionName + "</td>";
-          html += "<td>" + val.ReportDate + "</td>";
-          html += "<td>" + val.EndDate + "</td>";
+
+          // TODO: Should make this a function
+          var dateObject = new Date(parseInt(val.ReportDate.substring(6)));
+          var dateString = dateObject.toLocaleDateString();
+          html += "<td>" + dateString + "</td>";
+
+          // TODO: Should make this a function
+          dateObject = new Date(parseInt(val.EndDate.substring(6)));
+          dateString = dateObject.toLocaleDateString();
+          html += "<td>" + dateString + "</td>";
+
           html += "<td>" + val.Location + "</td>";
           html += "</tr>";
       });
