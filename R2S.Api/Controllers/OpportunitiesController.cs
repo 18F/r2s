@@ -19,6 +19,9 @@ namespace R2S.Api.Controllers
         private const string QUERY_FROM = " FROM ALL_VIEW ";
         private const string QUERY_END   = ";";
 
+        // TODO: Limit rows returned in prototype code
+        private const string QUERY_LIMIT = " top 50 ";
+
         // Column names which must match column names in Database
         private const string COLUMN_ADVERTISEMENT_ID    = "AdvertisementID";
         private const string COLUMN_MINIMUM_RANK        = "MinimumRank";
@@ -69,6 +72,9 @@ namespace R2S.Api.Controllers
 
             // Will hold the final query string to send to database
             string queryString = QUERY_START;
+
+            // TODO: Limit rows returned in prototype code
+            queryString += QUERY_LIMIT;
 
             // For each column to query, add it to query string with needed "," seperators 
             int numbersOfColumns = DatabaseColumnsToQuery.Count;
