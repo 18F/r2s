@@ -116,6 +116,11 @@ var App = (function () {
     $.getJSON("/Opportunities", function (data) {
         var html = "<table>";
 
+        // Format header row
+        // TODO: This should use common css style to applied across entire interface
+        // TODO: Not sure why background color is not working
+        html += "<tbody align=\"center\" style=\"font-weight:bold; background-color:#9D9696 bgcolor:#9D9696\">";
+
         // Table titles must match order of cells below in for loop
         html += "<td>ID</td>";
         html += "<td>Ranks</td>";
@@ -124,6 +129,9 @@ var App = (function () {
         html += "<td>Report Date</td>";
         html += "<td>End Data</td>";
         html += "<td>Location</td>";
+
+        // Close out format for header row
+        html += "</tbody>"
 
       $.each(data, function (i, val) {
         // var opportunity = new OpportunityModel() { AdvertisementID = advertisementID, RankRange = rankRange, QualificationSummary = qualificationSummary, MissionName = missionName, ReportDate = startDate, EndDate = endDate, Location = location };
