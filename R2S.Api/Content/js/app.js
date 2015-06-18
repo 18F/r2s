@@ -106,18 +106,39 @@ var App = (function () {
     $.getJSON("/Orders", function (data) {
       var html = "";
       $.each(data, function (i, val) {
-        html += "<h2>" + val.Title + "</h2>" + "<p>" + val.Description + "</p>";
+         html += "<h2>" + val.Title + "</h2>" + "<p>" + val.Description + "</p>";
       });
       $('#orders-list').html("<pre><code>" + JSON.stringify(data) + "</code></pre>" + html);
     });
   };
 
   var advertisementsController = function () {
-    $.getJSON("/Advertisements", function (data) {
-      var html = "";
+    $.getJSON("/Opportunities", function (data) {
+        var html = "<table>";
+
+        // Table titles must match order of cells below in for loop
+        html += "<td>ID</td>";
+        html += "<td>Ranks</td>";
+        html += "<td>Qualifications</td>";
+        html += "<td>Mission Name</td>";
+        html += "<td>Report Date</td>";
+        html += "<td>End Data</td>";
+        html += "<td>Location</td>";
+
       $.each(data, function (i, val) {
-        html += "<h2>" + val.Title + "</h2>" + "<p>" + val.Description + "</p>";
+        // var opportunity = new OpportunityModel() { AdvertisementID = advertisementID, RankRange = rankRange, QualificationSummary = qualificationSummary, MissionName = missionName, ReportDate = startDate, EndDate = endDate, Location = location };
+
+          html += "<tr>";
+          html += "<td>" + val.AdvertisementID + "</td>";
+          html += "<td>" + val.RankRange + "</td>";
+          html += "<td>" + val.QualificationSummary + "</td>";
+          html += "<td>" + val.MissionName + "</td>";
+          html += "<td>" + val.ReportDate + "</td>";
+          html += "<td>" + val.EndDate + "</td>";
+          html += "<td>" + val.Location + "</td>";
+          html += "</tr>";
       });
+      html += "</table>";
       $('#advertisement-list').html("<pre><code>" + JSON.stringify(data) + "</code></pre>" + html);
     });
   };
