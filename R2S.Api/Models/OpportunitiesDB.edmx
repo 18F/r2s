@@ -1,0 +1,2701 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Advertisement_PortalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AuditGetRequirements">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" />
+          <Property Name="Designator" Type="varchar" MaxLength="25" />
+          <Property Name="Rating" Type="varchar" MaxLength="3" />
+          <Property Name="NOBC" Type="varchar" MaxLength="8" />
+          <Property Name="NEC" Type="varchar" MaxLength="8" />
+          <Property Name="MissionName" Type="varchar" MaxLength="400" />
+          <Property Name="RequirementName" Type="varchar" MaxLength="255" />
+          <Property Name="AdvertisementID" Type="varchar" MaxLength="9" />
+          <Property Name="OrderType" Type="varchar" MaxLength="50" />
+          <Property Name="RankSwitch" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="CandidateInfo">
+          <Key>
+            <PropertyRef Name="CandidateInfoID" />
+          </Key>
+          <Property Name="CandidateInfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinimumRank" Type="varchar" MaxLength="3" />
+          <Property Name="MaximumRank" Type="varchar" MaxLength="3" />
+          <Property Name="Designator" Type="varchar" MaxLength="25" />
+          <Property Name="Rating" Type="varchar" MaxLength="25" />
+          <Property Name="NOBC" Type="varchar" MaxLength="8" />
+          <Property Name="NEC" Type="varchar" MaxLength="8" />
+          <Property Name="AQD" Type="varchar" MaxLength="4" />
+          <Property Name="Qualifications" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="1" />
+          <Property Name="SecurityClearanceRequiredID" Type="smallint" />
+          <Property Name="SecurityClearanceTypeID" Type="varchar" MaxLength="2" />
+          <Property Name="RequirementInfoID" Type="int" />
+          <Property Name="RankSwitch" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="ConusOconus">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="smallint" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Advertisement_Portal.dbo.DAILY_DELTA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DAILY_DELTA">
+          <Key>
+            <PropertyRef Name="REQUIREMENT_ID" />
+          </Key>
+          <Property Name="REQUIREMENT_ID" Type="int" Nullable="false" />
+          <Property Name="MISSION_ID" Type="int" />
+          <Property Name="REQUIREMENT_NAME" Type="varchar" MaxLength="255" />
+          <Property Name="REQUIREMENT_STATE" Type="tinyint" />
+          <Property Name="FILL_MODE" Type="smallint" />
+          <Property Name="NUMBER_ENLISTED" Type="smallint" />
+          <Property Name="NUMBER_OFFICERS" Type="smallint" />
+          <Property Name="REPORT_DATE" Type="date" />
+          <Property Name="END_DATE" Type="date" />
+          <Property Name="TOTAL_DAYS" Type="smallint" />
+          <Property Name="UIC" Type="varchar" MaxLength="5" />
+          <Property Name="UIC_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="DUTY_CITY" Type="varchar" MaxLength="36" />
+          <Property Name="DUTY_STATE" Type="varchar" MaxLength="32" />
+          <Property Name="DUTY_ZIP_CODE" Type="varchar" MaxLength="9" />
+          <Property Name="DUTY_COUNTRY" Type="varchar" MaxLength="32" />
+          <Property Name="POC_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="POC_PHONE" Type="varchar" MaxLength="30" />
+          <Property Name="POC_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="OPERATION_EXERCISE_EVENT_ID" Type="varchar" MaxLength="2" />
+          <Property Name="ORDER_TYPE_CODE" Type="varchar" MaxLength="6" />
+          <Property Name="ORDER_SUBTYPE_CODE" Type="varchar" MaxLength="10" />
+          <Property Name="DUTY_ABOARD_SHIP_IND" Type="tinyint" />
+          <Property Name="PCS_IND" Type="tinyint" />
+          <Property Name="MINIMUM_RANK" Type="varchar" MaxLength="3" />
+          <Property Name="MAXIMUM_RANK" Type="varchar" MaxLength="3" />
+          <Property Name="DESIGNATOR" Type="varchar" MaxLength="5" />
+          <Property Name="RATE_RANK" Type="varchar" MaxLength="3" />
+          <Property Name="NOBC" Type="varchar" MaxLength="4" />
+          <Property Name="NEC" Type="varchar" MaxLength="4" />
+          <Property Name="AQD" Type="varchar" MaxLength="4" />
+          <Property Name="QUALIFICATIONS" Type="varchar" MaxLength="50" />
+          <Property Name="GENDER" Type="varchar" MaxLength="1" />
+          <Property Name="SECURITY_CLEARANCE_REQUIRED" Type="tinyint" />
+          <Property Name="SECURITY_CLEARANCE_TYPE" Type="varchar" MaxLength="2" />
+          <Property Name="CONUS_OCONUS_IND" Type="tinyint" />
+          <Property Name="SOURCE" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="DutyInfo">
+          <Key>
+            <PropertyRef Name="DutyInfoID" />
+          </Key>
+          <Property Name="DutyInfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderTypeID" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="OrderSubTypeID" Type="varchar" MaxLength="10" />
+          <Property Name="DutyAfloatID" Type="smallint" />
+          <Property Name="PCS" Type="smallint" />
+          <Property Name="RequirementInfoID" Type="int" />
+        </EntityType>
+        <EntityType Name="MissionInfo">
+          <Key>
+            <PropertyRef Name="MissionID" />
+          </Key>
+          <Property Name="MissionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MissionName" Type="varchar" MaxLength="400" />
+          <Property Name="MissionReportDate" Type="datetime" />
+          <Property Name="MissionEndDate" Type="datetime" />
+          <Property Name="RequirementInfoID" Type="int" />
+        </EntityType>
+        <EntityType Name="NROWS_AD_FLEET_EXERCISE">
+          <Key>
+            <PropertyRef Name="FLEET_EXERCISE_CODE" />
+          </Key>
+          <Property Name="FLEET_EXERCISE_CODE" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="FLEET_EXERCISE_DESCRIPTION" Type="varchar" MaxLength="50" />
+          <Property Name="STATUS_CODE" Type="tinyint" />
+          <Property Name="USER_ID" Type="varchar" MaxLength="8" />
+          <Property Name="CHANGE_COMMENT" Type="varchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="NROWS_AD_LK_ADSW_AT_TYPES">
+          <Key>
+            <PropertyRef Name="LK_ADSW_ID" />
+          </Key>
+          <Property Name="LK_ADSW_ID" Type="smallint" Nullable="false" />
+          <Property Name="ADSW_TYPE_CODE" Type="varchar" MaxLength="10" />
+          <Property Name="ADSW_DESCRIPTION" Type="varchar" MaxLength="60" />
+          <Property Name="ADSW_SHORT_DESCRIPTION" Type="varchar" MaxLength="20" />
+          <Property Name="STATUS_CODE" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="NROWS_AD_LK_ORDER_TYPE">
+          <Key>
+            <PropertyRef Name="ORDER_TYPE_CODE" />
+          </Key>
+          <Property Name="ORDER_TYPE_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="ORDER_TYPE" Type="varchar" MaxLength="30" />
+          <Property Name="SHORT_DESCRIPTION" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="NROWS_AD_LK_TYPE_SECURITY">
+          <Key>
+            <PropertyRef Name="SECURITY_ID" />
+          </Key>
+          <Property Name="SECURITY_ID" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="TYPE_OF_CLEARANCE" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="NROWS_AD_MISSION">
+          <Key>
+            <PropertyRef Name="MISSION_ID" />
+          </Key>
+          <Property Name="MISSION_ID" Type="int" Nullable="false" />
+          <Property Name="REPORT_DATE" Type="date" />
+          <Property Name="END_DATE" Type="date" />
+          <Property Name="POC_NAME" Type="varchar" MaxLength="30" />
+          <Property Name="POC_EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="POC_PHONE" Type="varchar" MaxLength="30" />
+          <Property Name="POC_ORGANIZATION" Type="varchar" MaxLength="100" />
+          <Property Name="MISSION_COMMENTS" Type="varchar" MaxLength="1000" />
+          <Property Name="MISSION_NAME" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="NROWS_AD_REQUIREMENT_OWNER">
+          <Key>
+            <PropertyRef Name="REQUIREMENT_ID" />
+          </Key>
+          <Property Name="REQUIREMENT_ID" Type="int" Nullable="false" />
+          <Property Name="MISSION_ID" Type="int" />
+          <Property Name="REQUIREMENT_NAME" Type="varchar" MaxLength="255" />
+          <Property Name="REQUIREMENT_STATE" Type="tinyint" />
+          <Property Name="FILL_MODE" Type="smallint" />
+          <Property Name="NUMBER_ENLISTED" Type="smallint" />
+          <Property Name="NUMBER_OFFICERS" Type="smallint" />
+          <Property Name="REPORT_DATE" Type="date" />
+          <Property Name="END_DATE" Type="date" />
+          <Property Name="TOTAL_DAYS" Type="smallint" />
+          <Property Name="UIC" Type="varchar" MaxLength="5" />
+          <Property Name="UIC_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="DUTY_CITY" Type="varchar" MaxLength="36" />
+          <Property Name="DUTY_STATE" Type="varchar" MaxLength="32" />
+          <Property Name="DUTY_ZIP_CODE" Type="varchar" MaxLength="9" />
+          <Property Name="DUTY_COUNTRY" Type="varchar" MaxLength="32" />
+          <Property Name="POC_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="POC_PHONE" Type="varchar" MaxLength="30" />
+          <Property Name="POC_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="OPERATION_EXERCISE_EVENT_ID" Type="varchar" MaxLength="2" />
+          <Property Name="ORDER_TYPE_CODE" Type="varchar" MaxLength="6" />
+          <Property Name="ORDER_SUBTYPE_CODE" Type="varchar" MaxLength="10" />
+          <Property Name="DUTY_ABOARD_SHIP_IND" Type="tinyint" />
+          <Property Name="PCS_IND" Type="tinyint" />
+          <Property Name="MINIMUM_RANK" Type="varchar" MaxLength="3" />
+          <Property Name="MAXIMUM_RANK" Type="varchar" MaxLength="3" />
+          <Property Name="DESIGNATOR" Type="varchar" MaxLength="5" />
+          <Property Name="RATE_RANK" Type="varchar" MaxLength="3" />
+          <Property Name="NOBC" Type="varchar" MaxLength="8" />
+          <Property Name="NEC" Type="varchar" MaxLength="8" />
+          <Property Name="AQD" Type="varchar" MaxLength="4" />
+          <Property Name="QUALIFICATIONS" Type="varchar" MaxLength="50" />
+          <Property Name="GENDER" Type="varchar" MaxLength="1" />
+          <Property Name="SECURITY_CLEARANCE_REQUIRED" Type="tinyint" />
+          <Property Name="SECURITY_CLEARANCE_TYPE" Type="varchar" MaxLength="2" />
+          <Property Name="CONUS_OCONUS_IND" Type="tinyint" />
+          <Property Name="SOURCE" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="OperationEventExercise">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderSubTypes">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="OrderTypeID" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderTypes">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReportingInfo">
+          <Key>
+            <PropertyRef Name="ReportingInfoID" />
+          </Key>
+          <Property Name="ReportingInfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UIC" Type="varchar" MaxLength="5" />
+          <Property Name="UICName" Type="varchar" MaxLength="100" />
+          <Property Name="ConusOconusID" Type="smallint" />
+          <Property Name="City" Type="varchar" MaxLength="36" />
+          <Property Name="State" Type="varchar" MaxLength="32" />
+          <Property Name="Zipcode" Type="varchar" MaxLength="15" />
+          <Property Name="Country" Type="varchar" MaxLength="32" />
+          <Property Name="RequirementInfoID" Type="int" />
+        </EntityType>
+        <EntityType Name="RequirementInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Source" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SourceID" Type="int" />
+          <Property Name="AdvertisementID" Type="varchar" MaxLength="9" />
+          <Property Name="RequirementName" Type="varchar" MaxLength="255" />
+          <Property Name="OperationExerciseEventID" Type="varchar" MaxLength="2" />
+          <Property Name="ReportDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="TotalDays" Type="smallint" />
+          <Property Name="RequirementStateID" Type="smallint" />
+          <Property Name="NumberofEnlisted" Type="smallint" />
+          <Property Name="NumberofOfficers" Type="smallint" />
+          <Property Name="Comments" Type="text" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="MissionID" Type="int" />
+          <Property Name="NROWSIDAvailable" Type="smallint" />
+          <Property Name="NROWSRequirementID" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="RequirementOwner">
+          <Key>
+            <PropertyRef Name="RequirementOwnerID" />
+          </Key>
+          <Property Name="RequirementOwnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PocName" Type="varchar" MaxLength="100" />
+          <Property Name="PocPhone" Type="varchar" MaxLength="30" />
+          <Property Name="PocEmail" Type="varchar" MaxLength="50" />
+          <Property Name="PocOrganization" Type="varchar" MaxLength="100" />
+          <Property Name="RequirementInfoID" Type="int" />
+        </EntityType>
+        <EntityType Name="RequirementState">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="smallint" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SecurityClearanceType">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderBy" Type="smallint" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="YesNo">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="smallint" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Advertisement_Portal.dbo.All_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="All_View">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="CreatedDate" />
+            <PropertyRef Name="Source" />
+          </Key>
+          <Property Name="AdvertisementID" Type="varchar" MaxLength="9" />
+          <Property Name="CandidateInfoID" Type="int" />
+          <Property Name="MinimumRank" Type="varchar" MaxLength="3" />
+          <Property Name="MaximumRank" Type="varchar" MaxLength="3" />
+          <Property Name="Designator" Type="varchar" MaxLength="25" />
+          <Property Name="AQD" Type="varchar" MaxLength="4" />
+          <Property Name="NOBC" Type="varchar" MaxLength="8" />
+          <Property Name="Rating" Type="varchar" MaxLength="25" />
+          <Property Name="NEC" Type="varchar" MaxLength="8" />
+          <Property Name="Qualifications" Type="varchar" MaxLength="50" />
+          <Property Name="SecurityClearanceTypeID" Type="varchar" MaxLength="2" />
+          <Property Name="SecurityClearanceRequiredID" Type="smallint" />
+          <Property Name="Gender" Type="varchar" MaxLength="1" />
+          <Property Name="PCS" Type="smallint" />
+          <Property Name="DutyAfloatID" Type="smallint" />
+          <Property Name="OrderSubTypeID" Type="varchar" MaxLength="10" />
+          <Property Name="OrderTypeID" Type="varchar" MaxLength="6" />
+          <Property Name="DutyInfoID" Type="int" />
+          <Property Name="MissionID" Type="int" />
+          <Property Name="MissionName" Type="varchar" MaxLength="400" />
+          <Property Name="MissionReportDate" Type="datetime" />
+          <Property Name="MissionEndDate" Type="datetime" />
+          <Property Name="ReportingInfoID" Type="int" />
+          <Property Name="UIC" Type="varchar" MaxLength="5" />
+          <Property Name="UICName" Type="varchar" MaxLength="100" />
+          <Property Name="ConusOconusID" Type="smallint" />
+          <Property Name="City" Type="varchar" MaxLength="36" />
+          <Property Name="Country" Type="varchar" MaxLength="32" />
+          <Property Name="State" Type="varchar" MaxLength="32" />
+          <Property Name="Zipcode" Type="varchar" MaxLength="15" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="RequirementName" Type="varchar" MaxLength="255" />
+          <Property Name="OperationExerciseEventID" Type="varchar" MaxLength="2" />
+          <Property Name="ReportDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="TotalDays" Type="smallint" />
+          <Property Name="RequirementStateID" Type="smallint" />
+          <Property Name="Comments" Type="text" />
+          <Property Name="NumberofOfficers" Type="smallint" />
+          <Property Name="NumberofEnlisted" Type="smallint" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="PocOrganization" Type="varchar" MaxLength="100" />
+          <Property Name="PocEmail" Type="varchar" MaxLength="50" />
+          <Property Name="PocPhone" Type="varchar" MaxLength="30" />
+          <Property Name="PocName" Type="varchar" MaxLength="100" />
+          <Property Name="RequirementOwnerID" Type="int" />
+          <Property Name="ConOcon" Type="varchar" MaxLength="10" />
+          <Property Name="ClearanceType" Type="varchar" MaxLength="50" />
+          <Property Name="OpEvEx" Type="varchar" MaxLength="255" />
+          <Property Name="ReqState" Type="varchar" MaxLength="50" />
+          <Property Name="OrdType" Type="varchar" MaxLength="50" />
+          <Property Name="OrdSubType" Type="varchar" MaxLength="100" />
+          <Property Name="NROWSIDAvailable" Type="smallint" />
+          <Property Name="NROWSRequirementID" Type="varchar" MaxLength="25" />
+          <Property Name="Source" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="RankSwitch" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Advertisement_Portal.dbo.DD_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DD_View">
+          <Key>
+            <PropertyRef Name="REQUIREMENT_ID" />
+          </Key>
+          <Property Name="REQUIREMENT_ID" Type="int" Nullable="false" />
+          <Property Name="MISSION_ID" Type="int" />
+          <Property Name="REQUIREMENT_NAME" Type="varchar" MaxLength="255" />
+          <Property Name="REQUIREMENT_STATE" Type="tinyint" />
+          <Property Name="FILL_MODE" Type="smallint" />
+          <Property Name="NUMBER_ENLISTED" Type="smallint" />
+          <Property Name="NUMBER_OFFICERS" Type="smallint" />
+          <Property Name="REPORT_DATE" Type="date" />
+          <Property Name="END_DATE" Type="date" />
+          <Property Name="TOTAL_DAYS" Type="smallint" />
+          <Property Name="UIC" Type="varchar" MaxLength="5" />
+          <Property Name="UIC_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="DUTY_CITY" Type="varchar" MaxLength="36" />
+          <Property Name="DUTY_STATE" Type="varchar" MaxLength="32" />
+          <Property Name="DUTY_ZIP_CODE" Type="varchar" MaxLength="9" />
+          <Property Name="DUTY_COUNTRY" Type="varchar" MaxLength="32" />
+          <Property Name="POC_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="POC_PHONE" Type="varchar" MaxLength="30" />
+          <Property Name="POC_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="OPERATION_EXERCISE_EVENT_ID" Type="varchar" MaxLength="2" />
+          <Property Name="ORDER_TYPE_CODE" Type="varchar" MaxLength="6" />
+          <Property Name="ORDER_SUBTYPE_CODE" Type="varchar" MaxLength="10" />
+          <Property Name="DUTY_ABOARD_SHIP_IND" Type="tinyint" />
+          <Property Name="PCS_IND" Type="tinyint" />
+          <Property Name="MINIMUM_RANK" Type="varchar" MaxLength="3" />
+          <Property Name="MAXIMUM_RANK" Type="varchar" MaxLength="3" />
+          <Property Name="DESIGNATOR" Type="varchar" MaxLength="5" />
+          <Property Name="RATE_RANK" Type="varchar" MaxLength="3" />
+          <Property Name="NOBC" Type="varchar" MaxLength="4" />
+          <Property Name="NEC" Type="varchar" MaxLength="4" />
+          <Property Name="AQD" Type="varchar" MaxLength="4" />
+          <Property Name="QUALIFICATIONS" Type="varchar" MaxLength="50" />
+          <Property Name="GENDER" Type="varchar" MaxLength="1" />
+          <Property Name="SECURITY_CLEARANCE_REQUIRED" Type="tinyint" />
+          <Property Name="SECURITY_CLEARANCE_TYPE" Type="varchar" MaxLength="2" />
+          <Property Name="CONUS_OCONUS_IND" Type="tinyint" />
+          <Property Name="SOURCE" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__Candidate__Requi__5441852A">
+          <End Role="RequirementInfo" Type="Self.RequirementInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CandidateInfo" Type="Self.CandidateInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequirementInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CandidateInfo">
+              <PropertyRef Name="RequirementInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Candidate__Secur__5629CD9C">
+          <End Role="YesNo" Type="Self.YesNo" Multiplicity="0..1" />
+          <End Role="CandidateInfo" Type="Self.CandidateInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YesNo">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="CandidateInfo">
+              <PropertyRef Name="SecurityClearanceRequiredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Candidate__Secur__5BE2A6F2">
+          <End Role="SecurityClearanceType" Type="Self.SecurityClearanceType" Multiplicity="0..1" />
+          <End Role="CandidateInfo" Type="Self.CandidateInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecurityClearanceType">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="CandidateInfo">
+              <PropertyRef Name="SecurityClearanceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DutyInfo__DutyAf__76969D2E">
+          <End Role="YesNo" Type="Self.YesNo" Multiplicity="0..1" />
+          <End Role="DutyInfo" Type="Self.DutyInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YesNo">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="DutyInfo">
+              <PropertyRef Name="DutyAfloatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DutyInfo__OrderS__778AC167">
+          <End Role="OrderSubTypes" Type="Self.OrderSubTypes" Multiplicity="0..1" />
+          <End Role="DutyInfo" Type="Self.DutyInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderSubTypes">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="DutyInfo">
+              <PropertyRef Name="OrderSubTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DutyInfo__OrderT__787EE5A0">
+          <End Role="OrderTypes" Type="Self.OrderTypes" Multiplicity="1" />
+          <End Role="DutyInfo" Type="Self.DutyInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderTypes">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="DutyInfo">
+              <PropertyRef Name="OrderTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DutyInfo__PCS__797309D9">
+          <End Role="YesNo" Type="Self.YesNo" Multiplicity="0..1" />
+          <End Role="DutyInfo" Type="Self.DutyInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YesNo">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="DutyInfo">
+              <PropertyRef Name="PCS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DutyInfo__Requir__7A672E12">
+          <End Role="RequirementInfo" Type="Self.RequirementInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DutyInfo" Type="Self.DutyInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequirementInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DutyInfo">
+              <PropertyRef Name="RequirementInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MissionIn__Requi__7C4F7684">
+          <End Role="RequirementInfo" Type="Self.RequirementInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MissionInfo" Type="Self.MissionInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequirementInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MissionInfo">
+              <PropertyRef Name="RequirementInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderSubT__Order__71D1E811">
+          <End Role="OrderTypes" Type="Self.OrderTypes" Multiplicity="1" />
+          <End Role="OrderSubTypes" Type="Self.OrderSubTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderTypes">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="OrderSubTypes">
+              <PropertyRef Name="OrderTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reporting__Conus__01142BA1">
+          <End Role="ConusOconus" Type="Self.ConusOconus" Multiplicity="0..1" />
+          <End Role="ReportingInfo" Type="Self.ReportingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConusOconus">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="ReportingInfo">
+              <PropertyRef Name="ConusOconusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reporting__Requi__02084FDA">
+          <End Role="RequirementInfo" Type="Self.RequirementInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReportingInfo" Type="Self.ReportingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequirementInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReportingInfo">
+              <PropertyRef Name="RequirementInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Requireme__Requi__3C69FB99">
+          <End Role="RequirementInfo" Type="Self.RequirementInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RequirementOwner" Type="Self.RequirementOwner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequirementInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RequirementOwner">
+              <PropertyRef Name="RequirementInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DeleteRequirement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GenerateId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="char">
+          <Parameter Name="source" Type="varchar" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetDailyDelta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetRequirementByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetRequirementByRequirementID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AdvertisementId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetRequirements" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AdvertisementID" Type="varchar" Mode="In" />
+          <Parameter Name="NROWSRequirementID" Type="varchar" Mode="In" />
+          <Parameter Name="Designator" Type="varchar" Mode="In" />
+          <Parameter Name="Rating" Type="varchar" Mode="In" />
+          <Parameter Name="NOBC" Type="varchar" Mode="In" />
+          <Parameter Name="NEC" Type="varchar" Mode="In" />
+          <Parameter Name="MissionName" Type="varchar" Mode="In" />
+          <Parameter Name="RequirementName" Type="varchar" Mode="In" />
+          <Parameter Name="OrderType" Type="varchar" Mode="In" />
+          <Parameter Name="MinRank" Type="varchar" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertRequirement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MinimumRank" Type="char" Mode="In" />
+          <Parameter Name="MaximumRank" Type="char" Mode="In" />
+          <Parameter Name="Designator" Type="varchar" Mode="In" />
+          <Parameter Name="AQD" Type="char" Mode="In" />
+          <Parameter Name="NOBC" Type="char" Mode="In" />
+          <Parameter Name="Rating" Type="char" Mode="In" />
+          <Parameter Name="NEC" Type="char" Mode="In" />
+          <Parameter Name="Qualifications" Type="char" Mode="In" />
+          <Parameter Name="SecurityClearanceTypeID" Type="char" Mode="In" />
+          <Parameter Name="SecurityClearanceRequiredID" Type="smallint" Mode="In" />
+          <Parameter Name="Gender" Type="char" Mode="In" />
+          <Parameter Name="PCS" Type="smallint" Mode="In" />
+          <Parameter Name="DutyAfloatID" Type="smallint" Mode="In" />
+          <Parameter Name="OrderSubTypeID" Type="char" Mode="In" />
+          <Parameter Name="OrderTypeID" Type="char" Mode="In" />
+          <Parameter Name="MissionName" Type="char" Mode="In" />
+          <Parameter Name="MissionReportDate" Type="datetime" Mode="In" />
+          <Parameter Name="MissionEndDate" Type="datetime" Mode="In" />
+          <Parameter Name="UIC" Type="char" Mode="In" />
+          <Parameter Name="UICName" Type="char" Mode="In" />
+          <Parameter Name="ConusOconusID" Type="smallint" Mode="In" />
+          <Parameter Name="City" Type="char" Mode="In" />
+          <Parameter Name="State" Type="char" Mode="In" />
+          <Parameter Name="Zipcode" Type="char" Mode="In" />
+          <Parameter Name="Country" Type="char" Mode="In" />
+          <Parameter Name="RequirementName" Type="varchar" Mode="In" />
+          <Parameter Name="OperationExerciseEventID" Type="varchar" Mode="In" />
+          <Parameter Name="ReportDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+          <Parameter Name="TotalDays" Type="smallint" Mode="In" />
+          <Parameter Name="RequirementStateID" Type="smallint" Mode="In" />
+          <Parameter Name="Comments" Type="text" Mode="In" />
+          <Parameter Name="NumberofOfficers" Type="smallint" Mode="In" />
+          <Parameter Name="NumberofEnlisted" Type="smallint" Mode="In" />
+          <Parameter Name="PocOrganization" Type="varchar" Mode="In" />
+          <Parameter Name="PocEmail" Type="varchar" Mode="In" />
+          <Parameter Name="PocPhone" Type="varchar" Mode="In" />
+          <Parameter Name="PocName" Type="varchar" Mode="In" />
+          <Parameter Name="NROWSRequirementID" Type="varchar" Mode="In" />
+          <Parameter Name="NROWSIDAvailable" Type="smallint" Mode="In" />
+          <Parameter Name="Source" Type="varchar" Mode="In" />
+          <Parameter Name="RankSwitch" Type="varchar" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="RHS_Merge_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_Daily_Delta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Import_From_RHS_Global" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateRequirement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MinimumRank" Type="char" Mode="In" />
+          <Parameter Name="MaximumRank" Type="char" Mode="In" />
+          <Parameter Name="Designator" Type="varchar" Mode="In" />
+          <Parameter Name="AQD" Type="char" Mode="In" />
+          <Parameter Name="NOBC" Type="char" Mode="In" />
+          <Parameter Name="Rating" Type="char" Mode="In" />
+          <Parameter Name="NEC" Type="char" Mode="In" />
+          <Parameter Name="Qualifications" Type="char" Mode="In" />
+          <Parameter Name="SecurityClearanceTypeID" Type="char" Mode="In" />
+          <Parameter Name="SecurityClearanceRequiredID" Type="smallint" Mode="In" />
+          <Parameter Name="Gender" Type="char" Mode="In" />
+          <Parameter Name="PCS" Type="smallint" Mode="In" />
+          <Parameter Name="DutyAfloatID" Type="smallint" Mode="In" />
+          <Parameter Name="OrderSubTypeID" Type="char" Mode="In" />
+          <Parameter Name="OrderTypeID" Type="char" Mode="In" />
+          <Parameter Name="MissionName" Type="char" Mode="In" />
+          <Parameter Name="MissionReportDate" Type="datetime" Mode="In" />
+          <Parameter Name="MissionEndDate" Type="datetime" Mode="In" />
+          <Parameter Name="UIC" Type="char" Mode="In" />
+          <Parameter Name="UICName" Type="char" Mode="In" />
+          <Parameter Name="ConusOconusID" Type="smallint" Mode="In" />
+          <Parameter Name="City" Type="char" Mode="In" />
+          <Parameter Name="State" Type="char" Mode="In" />
+          <Parameter Name="Zipcode" Type="char" Mode="In" />
+          <Parameter Name="Country" Type="char" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="RequirementName" Type="varchar" Mode="In" />
+          <Parameter Name="OperationExerciseEventID" Type="varchar" Mode="In" />
+          <Parameter Name="ReportDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+          <Parameter Name="TotalDays" Type="smallint" Mode="In" />
+          <Parameter Name="RequirementStateID" Type="smallint" Mode="In" />
+          <Parameter Name="Comments" Type="text" Mode="In" />
+          <Parameter Name="NumberofOfficers" Type="smallint" Mode="In" />
+          <Parameter Name="NumberofEnlisted" Type="smallint" Mode="In" />
+          <Parameter Name="PocOrganization" Type="varchar" Mode="In" />
+          <Parameter Name="PocEmail" Type="varchar" Mode="In" />
+          <Parameter Name="PocPhone" Type="varchar" Mode="In" />
+          <Parameter Name="PocName" Type="varchar" Mode="In" />
+          <Parameter Name="NROWSIDAvailable" Type="smallint" Mode="In" />
+          <Parameter Name="NROWSRequirementID" Type="varchar" Mode="In" />
+          <Parameter Name="Source" Type="varchar" Mode="In" />
+          <Parameter Name="RankSwitch" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Advertisement_PortalModelStoreContainer">
+          <EntitySet Name="AuditGetRequirements" EntityType="Self.AuditGetRequirements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateInfo" EntityType="Self.CandidateInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConusOconus" EntityType="Self.ConusOconus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DutyInfo" EntityType="Self.DutyInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MissionInfo" EntityType="Self.MissionInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NROWS_AD_FLEET_EXERCISE" EntityType="Self.NROWS_AD_FLEET_EXERCISE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NROWS_AD_LK_ADSW_AT_TYPES" EntityType="Self.NROWS_AD_LK_ADSW_AT_TYPES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NROWS_AD_LK_ORDER_TYPE" EntityType="Self.NROWS_AD_LK_ORDER_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NROWS_AD_LK_TYPE_SECURITY" EntityType="Self.NROWS_AD_LK_TYPE_SECURITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NROWS_AD_MISSION" EntityType="Self.NROWS_AD_MISSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NROWS_AD_REQUIREMENT_OWNER" EntityType="Self.NROWS_AD_REQUIREMENT_OWNER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationEventExercise" EntityType="Self.OperationEventExercise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderSubTypes" EntityType="Self.OrderSubTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderTypes" EntityType="Self.OrderTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportingInfo" EntityType="Self.ReportingInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequirementInfo" EntityType="Self.RequirementInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequirementOwner" EntityType="Self.RequirementOwner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequirementState" EntityType="Self.RequirementState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecurityClearanceType" EntityType="Self.SecurityClearanceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YesNo" EntityType="Self.YesNo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DAILY_DELTA" EntityType="Self.DAILY_DELTA" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DAILY_DELTA].[REQUIREMENT_ID] AS [REQUIREMENT_ID], 
+    [DAILY_DELTA].[MISSION_ID] AS [MISSION_ID], 
+    [DAILY_DELTA].[REQUIREMENT_NAME] AS [REQUIREMENT_NAME], 
+    [DAILY_DELTA].[REQUIREMENT_STATE] AS [REQUIREMENT_STATE], 
+    [DAILY_DELTA].[FILL_MODE] AS [FILL_MODE], 
+    [DAILY_DELTA].[NUMBER_ENLISTED] AS [NUMBER_ENLISTED], 
+    [DAILY_DELTA].[NUMBER_OFFICERS] AS [NUMBER_OFFICERS], 
+    [DAILY_DELTA].[REPORT_DATE] AS [REPORT_DATE], 
+    [DAILY_DELTA].[END_DATE] AS [END_DATE], 
+    [DAILY_DELTA].[TOTAL_DAYS] AS [TOTAL_DAYS], 
+    [DAILY_DELTA].[UIC] AS [UIC], 
+    [DAILY_DELTA].[UIC_NAME] AS [UIC_NAME], 
+    [DAILY_DELTA].[DUTY_CITY] AS [DUTY_CITY], 
+    [DAILY_DELTA].[DUTY_STATE] AS [DUTY_STATE], 
+    [DAILY_DELTA].[DUTY_ZIP_CODE] AS [DUTY_ZIP_CODE], 
+    [DAILY_DELTA].[DUTY_COUNTRY] AS [DUTY_COUNTRY], 
+    [DAILY_DELTA].[POC_NAME] AS [POC_NAME], 
+    [DAILY_DELTA].[POC_PHONE] AS [POC_PHONE], 
+    [DAILY_DELTA].[POC_EMAIL] AS [POC_EMAIL], 
+    [DAILY_DELTA].[OPERATION_EXERCISE_EVENT_ID] AS [OPERATION_EXERCISE_EVENT_ID], 
+    [DAILY_DELTA].[ORDER_TYPE_CODE] AS [ORDER_TYPE_CODE], 
+    [DAILY_DELTA].[ORDER_SUBTYPE_CODE] AS [ORDER_SUBTYPE_CODE], 
+    [DAILY_DELTA].[DUTY_ABOARD_SHIP_IND] AS [DUTY_ABOARD_SHIP_IND], 
+    [DAILY_DELTA].[PCS_IND] AS [PCS_IND], 
+    [DAILY_DELTA].[MINIMUM_RANK] AS [MINIMUM_RANK], 
+    [DAILY_DELTA].[MAXIMUM_RANK] AS [MAXIMUM_RANK], 
+    [DAILY_DELTA].[DESIGNATOR] AS [DESIGNATOR], 
+    [DAILY_DELTA].[RATE_RANK] AS [RATE_RANK], 
+    [DAILY_DELTA].[NOBC] AS [NOBC], 
+    [DAILY_DELTA].[NEC] AS [NEC], 
+    [DAILY_DELTA].[AQD] AS [AQD], 
+    [DAILY_DELTA].[QUALIFICATIONS] AS [QUALIFICATIONS], 
+    [DAILY_DELTA].[GENDER] AS [GENDER], 
+    [DAILY_DELTA].[SECURITY_CLEARANCE_REQUIRED] AS [SECURITY_CLEARANCE_REQUIRED], 
+    [DAILY_DELTA].[SECURITY_CLEARANCE_TYPE] AS [SECURITY_CLEARANCE_TYPE], 
+    [DAILY_DELTA].[CONUS_OCONUS_IND] AS [CONUS_OCONUS_IND], 
+    [DAILY_DELTA].[SOURCE] AS [SOURCE]
+    FROM [dbo].[DAILY_DELTA] AS [DAILY_DELTA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="All_View" EntityType="Self.All_View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [All_View].[AdvertisementID] AS [AdvertisementID], 
+    [All_View].[CandidateInfoID] AS [CandidateInfoID], 
+    [All_View].[MinimumRank] AS [MinimumRank], 
+    [All_View].[MaximumRank] AS [MaximumRank], 
+    [All_View].[Designator] AS [Designator], 
+    [All_View].[AQD] AS [AQD], 
+    [All_View].[NOBC] AS [NOBC], 
+    [All_View].[Rating] AS [Rating], 
+    [All_View].[NEC] AS [NEC], 
+    [All_View].[Qualifications] AS [Qualifications], 
+    [All_View].[SecurityClearanceTypeID] AS [SecurityClearanceTypeID], 
+    [All_View].[SecurityClearanceRequiredID] AS [SecurityClearanceRequiredID], 
+    [All_View].[Gender] AS [Gender], 
+    [All_View].[PCS] AS [PCS], 
+    [All_View].[DutyAfloatID] AS [DutyAfloatID], 
+    [All_View].[OrderSubTypeID] AS [OrderSubTypeID], 
+    [All_View].[OrderTypeID] AS [OrderTypeID], 
+    [All_View].[DutyInfoID] AS [DutyInfoID], 
+    [All_View].[MissionID] AS [MissionID], 
+    [All_View].[MissionName] AS [MissionName], 
+    [All_View].[MissionReportDate] AS [MissionReportDate], 
+    [All_View].[MissionEndDate] AS [MissionEndDate], 
+    [All_View].[ReportingInfoID] AS [ReportingInfoID], 
+    [All_View].[UIC] AS [UIC], 
+    [All_View].[UICName] AS [UICName], 
+    [All_View].[ConusOconusID] AS [ConusOconusID], 
+    [All_View].[City] AS [City], 
+    [All_View].[Country] AS [Country], 
+    [All_View].[State] AS [State], 
+    [All_View].[Zipcode] AS [Zipcode], 
+    [All_View].[ID] AS [ID], 
+    [All_View].[RequirementName] AS [RequirementName], 
+    [All_View].[OperationExerciseEventID] AS [OperationExerciseEventID], 
+    [All_View].[ReportDate] AS [ReportDate], 
+    [All_View].[EndDate] AS [EndDate], 
+    [All_View].[TotalDays] AS [TotalDays], 
+    [All_View].[RequirementStateID] AS [RequirementStateID], 
+    [All_View].[Comments] AS [Comments], 
+    [All_View].[NumberofOfficers] AS [NumberofOfficers], 
+    [All_View].[NumberofEnlisted] AS [NumberofEnlisted], 
+    [All_View].[CreatedDate] AS [CreatedDate], 
+    [All_View].[PocOrganization] AS [PocOrganization], 
+    [All_View].[PocEmail] AS [PocEmail], 
+    [All_View].[PocPhone] AS [PocPhone], 
+    [All_View].[PocName] AS [PocName], 
+    [All_View].[RequirementOwnerID] AS [RequirementOwnerID], 
+    [All_View].[ConOcon] AS [ConOcon], 
+    [All_View].[ClearanceType] AS [ClearanceType], 
+    [All_View].[OpEvEx] AS [OpEvEx], 
+    [All_View].[ReqState] AS [ReqState], 
+    [All_View].[OrdType] AS [OrdType], 
+    [All_View].[OrdSubType] AS [OrdSubType], 
+    [All_View].[NROWSIDAvailable] AS [NROWSIDAvailable], 
+    [All_View].[NROWSRequirementID] AS [NROWSRequirementID], 
+    [All_View].[Source] AS [Source], 
+    [All_View].[RankSwitch] AS [RankSwitch]
+    FROM [dbo].[All_View] AS [All_View]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DD_View" EntityType="Self.DD_View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DD_View].[REQUIREMENT_ID] AS [REQUIREMENT_ID], 
+    [DD_View].[MISSION_ID] AS [MISSION_ID], 
+    [DD_View].[REQUIREMENT_NAME] AS [REQUIREMENT_NAME], 
+    [DD_View].[REQUIREMENT_STATE] AS [REQUIREMENT_STATE], 
+    [DD_View].[FILL_MODE] AS [FILL_MODE], 
+    [DD_View].[NUMBER_ENLISTED] AS [NUMBER_ENLISTED], 
+    [DD_View].[NUMBER_OFFICERS] AS [NUMBER_OFFICERS], 
+    [DD_View].[REPORT_DATE] AS [REPORT_DATE], 
+    [DD_View].[END_DATE] AS [END_DATE], 
+    [DD_View].[TOTAL_DAYS] AS [TOTAL_DAYS], 
+    [DD_View].[UIC] AS [UIC], 
+    [DD_View].[UIC_NAME] AS [UIC_NAME], 
+    [DD_View].[DUTY_CITY] AS [DUTY_CITY], 
+    [DD_View].[DUTY_STATE] AS [DUTY_STATE], 
+    [DD_View].[DUTY_ZIP_CODE] AS [DUTY_ZIP_CODE], 
+    [DD_View].[DUTY_COUNTRY] AS [DUTY_COUNTRY], 
+    [DD_View].[POC_NAME] AS [POC_NAME], 
+    [DD_View].[POC_PHONE] AS [POC_PHONE], 
+    [DD_View].[POC_EMAIL] AS [POC_EMAIL], 
+    [DD_View].[OPERATION_EXERCISE_EVENT_ID] AS [OPERATION_EXERCISE_EVENT_ID], 
+    [DD_View].[ORDER_TYPE_CODE] AS [ORDER_TYPE_CODE], 
+    [DD_View].[ORDER_SUBTYPE_CODE] AS [ORDER_SUBTYPE_CODE], 
+    [DD_View].[DUTY_ABOARD_SHIP_IND] AS [DUTY_ABOARD_SHIP_IND], 
+    [DD_View].[PCS_IND] AS [PCS_IND], 
+    [DD_View].[MINIMUM_RANK] AS [MINIMUM_RANK], 
+    [DD_View].[MAXIMUM_RANK] AS [MAXIMUM_RANK], 
+    [DD_View].[DESIGNATOR] AS [DESIGNATOR], 
+    [DD_View].[RATE_RANK] AS [RATE_RANK], 
+    [DD_View].[NOBC] AS [NOBC], 
+    [DD_View].[NEC] AS [NEC], 
+    [DD_View].[AQD] AS [AQD], 
+    [DD_View].[QUALIFICATIONS] AS [QUALIFICATIONS], 
+    [DD_View].[GENDER] AS [GENDER], 
+    [DD_View].[SECURITY_CLEARANCE_REQUIRED] AS [SECURITY_CLEARANCE_REQUIRED], 
+    [DD_View].[SECURITY_CLEARANCE_TYPE] AS [SECURITY_CLEARANCE_TYPE], 
+    [DD_View].[CONUS_OCONUS_IND] AS [CONUS_OCONUS_IND], 
+    [DD_View].[SOURCE] AS [SOURCE]
+    FROM [dbo].[DD_View] AS [DD_View]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Candidate__Requi__5441852A" Association="Self.FK__Candidate__Requi__5441852A">
+            <End Role="RequirementInfo" EntitySet="RequirementInfo" />
+            <End Role="CandidateInfo" EntitySet="CandidateInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Candidate__Secur__5629CD9C" Association="Self.FK__Candidate__Secur__5629CD9C">
+            <End Role="YesNo" EntitySet="YesNo" />
+            <End Role="CandidateInfo" EntitySet="CandidateInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Candidate__Secur__5BE2A6F2" Association="Self.FK__Candidate__Secur__5BE2A6F2">
+            <End Role="SecurityClearanceType" EntitySet="SecurityClearanceType" />
+            <End Role="CandidateInfo" EntitySet="CandidateInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DutyInfo__DutyAf__76969D2E" Association="Self.FK__DutyInfo__DutyAf__76969D2E">
+            <End Role="YesNo" EntitySet="YesNo" />
+            <End Role="DutyInfo" EntitySet="DutyInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DutyInfo__OrderS__778AC167" Association="Self.FK__DutyInfo__OrderS__778AC167">
+            <End Role="OrderSubTypes" EntitySet="OrderSubTypes" />
+            <End Role="DutyInfo" EntitySet="DutyInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DutyInfo__OrderT__787EE5A0" Association="Self.FK__DutyInfo__OrderT__787EE5A0">
+            <End Role="OrderTypes" EntitySet="OrderTypes" />
+            <End Role="DutyInfo" EntitySet="DutyInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DutyInfo__PCS__797309D9" Association="Self.FK__DutyInfo__PCS__797309D9">
+            <End Role="YesNo" EntitySet="YesNo" />
+            <End Role="DutyInfo" EntitySet="DutyInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DutyInfo__Requir__7A672E12" Association="Self.FK__DutyInfo__Requir__7A672E12">
+            <End Role="RequirementInfo" EntitySet="RequirementInfo" />
+            <End Role="DutyInfo" EntitySet="DutyInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MissionIn__Requi__7C4F7684" Association="Self.FK__MissionIn__Requi__7C4F7684">
+            <End Role="RequirementInfo" EntitySet="RequirementInfo" />
+            <End Role="MissionInfo" EntitySet="MissionInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderSubT__Order__71D1E811" Association="Self.FK__OrderSubT__Order__71D1E811">
+            <End Role="OrderTypes" EntitySet="OrderTypes" />
+            <End Role="OrderSubTypes" EntitySet="OrderSubTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reporting__Conus__01142BA1" Association="Self.FK__Reporting__Conus__01142BA1">
+            <End Role="ConusOconus" EntitySet="ConusOconus" />
+            <End Role="ReportingInfo" EntitySet="ReportingInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reporting__Requi__02084FDA" Association="Self.FK__Reporting__Requi__02084FDA">
+            <End Role="RequirementInfo" EntitySet="RequirementInfo" />
+            <End Role="ReportingInfo" EntitySet="ReportingInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Requireme__Requi__3C69FB99" Association="Self.FK__Requireme__Requi__3C69FB99">
+            <End Role="RequirementInfo" EntitySet="RequirementInfo" />
+            <End Role="RequirementOwner" EntitySet="RequirementOwner" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Advertisement_PortalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AuditGetRequirement">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditDate" Type="DateTime" Precision="3" />
+          <Property Name="Designator" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="NOBC" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="NEC" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="MissionName" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="RequirementName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AdvertisementID" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="OrderType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RankSwitch" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CandidateInfo">
+          <Key>
+            <PropertyRef Name="CandidateInfoID" />
+          </Key>
+          <Property Name="CandidateInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MinimumRank" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="MaximumRank" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Designator" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="NOBC" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="NEC" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="AQD" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Qualifications" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityClearanceRequiredID" Type="Int16" />
+          <Property Name="SecurityClearanceTypeID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="RequirementInfoID" Type="Int32" />
+          <Property Name="RankSwitch" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RequirementInfo" Relationship="Self.FK__Candidate__Requi__5441852A" FromRole="CandidateInfo" ToRole="RequirementInfo" />
+          <NavigationProperty Name="YesNo" Relationship="Self.FK__Candidate__Secur__5629CD9C" FromRole="CandidateInfo" ToRole="YesNo" />
+          <NavigationProperty Name="SecurityClearanceType" Relationship="Self.FK__Candidate__Secur__5BE2A6F2" FromRole="CandidateInfo" ToRole="SecurityClearanceType" />
+        </EntityType>
+        <EntityType Name="ConusOconu">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="Int16" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ReportingInfoes" Relationship="Self.FK__Reporting__Conus__01142BA1" FromRole="ConusOconus" ToRole="ReportingInfo" />
+        </EntityType>
+        <EntityType Name="DutyInfo">
+          <Key>
+            <PropertyRef Name="DutyInfoID" />
+          </Key>
+          <Property Name="DutyInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderTypeID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderSubTypeID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DutyAfloatID" Type="Int16" />
+          <Property Name="PCS" Type="Int16" />
+          <Property Name="RequirementInfoID" Type="Int32" />
+          <NavigationProperty Name="YesNo" Relationship="Self.FK__DutyInfo__DutyAf__76969D2E" FromRole="DutyInfo" ToRole="YesNo" />
+          <NavigationProperty Name="OrderSubType" Relationship="Self.FK__DutyInfo__OrderS__778AC167" FromRole="DutyInfo" ToRole="OrderSubTypes" />
+          <NavigationProperty Name="OrderType" Relationship="Self.FK__DutyInfo__OrderT__787EE5A0" FromRole="DutyInfo" ToRole="OrderTypes" />
+          <NavigationProperty Name="YesNo1" Relationship="Self.FK__DutyInfo__PCS__797309D9" FromRole="DutyInfo" ToRole="YesNo" />
+          <NavigationProperty Name="RequirementInfo" Relationship="Self.FK__DutyInfo__Requir__7A672E12" FromRole="DutyInfo" ToRole="RequirementInfo" />
+        </EntityType>
+        <EntityType Name="MissionInfo">
+          <Key>
+            <PropertyRef Name="MissionID" />
+          </Key>
+          <Property Name="MissionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MissionName" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="MissionReportDate" Type="DateTime" Precision="3" />
+          <Property Name="MissionEndDate" Type="DateTime" Precision="3" />
+          <Property Name="RequirementInfoID" Type="Int32" />
+          <NavigationProperty Name="RequirementInfo" Relationship="Self.FK__MissionIn__Requi__7C4F7684" FromRole="MissionInfo" ToRole="RequirementInfo" />
+        </EntityType>
+        <EntityType Name="NROWS_AD_FLEET_EXERCISE">
+          <Key>
+            <PropertyRef Name="FLEET_EXERCISE_CODE" />
+          </Key>
+          <Property Name="FLEET_EXERCISE_CODE" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FLEET_EXERCISE_DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS_CODE" Type="Byte" />
+          <Property Name="USER_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="CHANGE_COMMENT" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NROWS_AD_LK_ADSW_AT_TYPES">
+          <Key>
+            <PropertyRef Name="LK_ADSW_ID" />
+          </Key>
+          <Property Name="LK_ADSW_ID" Type="Int16" Nullable="false" />
+          <Property Name="ADSW_TYPE_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ADSW_DESCRIPTION" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ADSW_SHORT_DESCRIPTION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS_CODE" Type="Byte" />
+        </EntityType>
+        <EntityType Name="NROWS_AD_LK_ORDER_TYPE">
+          <Key>
+            <PropertyRef Name="ORDER_TYPE_CODE" />
+          </Key>
+          <Property Name="ORDER_TYPE_CODE" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ORDER_TYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SHORT_DESCRIPTION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NROWS_AD_LK_TYPE_SECURITY">
+          <Key>
+            <PropertyRef Name="SECURITY_ID" />
+          </Key>
+          <Property Name="SECURITY_ID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TYPE_OF_CLEARANCE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NROWS_AD_MISSION">
+          <Key>
+            <PropertyRef Name="MISSION_ID" />
+          </Key>
+          <Property Name="MISSION_ID" Type="Int32" Nullable="false" />
+          <Property Name="REPORT_DATE" Type="DateTime" Precision="0" />
+          <Property Name="END_DATE" Type="DateTime" Precision="0" />
+          <Property Name="POC_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="POC_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POC_PHONE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="POC_ORGANIZATION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MISSION_COMMENTS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MISSION_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NROWS_AD_REQUIREMENT_OWNER">
+          <Key>
+            <PropertyRef Name="REQUIREMENT_ID" />
+          </Key>
+          <Property Name="REQUIREMENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="MISSION_ID" Type="Int32" />
+          <Property Name="REQUIREMENT_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="REQUIREMENT_STATE" Type="Byte" />
+          <Property Name="FILL_MODE" Type="Int16" />
+          <Property Name="NUMBER_ENLISTED" Type="Int16" />
+          <Property Name="NUMBER_OFFICERS" Type="Int16" />
+          <Property Name="REPORT_DATE" Type="DateTime" Precision="0" />
+          <Property Name="END_DATE" Type="DateTime" Precision="0" />
+          <Property Name="TOTAL_DAYS" Type="Int16" />
+          <Property Name="UIC" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="UIC_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_CITY" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_STATE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_ZIP_CODE" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_COUNTRY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="POC_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="POC_PHONE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="POC_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OPERATION_EXERCISE_EVENT_ID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_TYPE_CODE" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_SUBTYPE_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_ABOARD_SHIP_IND" Type="Byte" />
+          <Property Name="PCS_IND" Type="Byte" />
+          <Property Name="MINIMUM_RANK" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="MAXIMUM_RANK" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DESIGNATOR" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="RATE_RANK" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="NOBC" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="NEC" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="AQD" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="QUALIFICATIONS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SECURITY_CLEARANCE_REQUIRED" Type="Byte" />
+          <Property Name="SECURITY_CLEARANCE_TYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="CONUS_OCONUS_IND" Type="Byte" />
+          <Property Name="SOURCE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OperationEventExercise">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderSubType">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderTypeID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DutyInfoes" Relationship="Self.FK__DutyInfo__OrderS__778AC167" FromRole="OrderSubTypes" ToRole="DutyInfo" />
+          <NavigationProperty Name="OrderType" Relationship="Self.FK__OrderSubT__Order__71D1E811" FromRole="OrderSubTypes" ToRole="OrderTypes" />
+        </EntityType>
+        <EntityType Name="OrderType">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DutyInfoes" Relationship="Self.FK__DutyInfo__OrderT__787EE5A0" FromRole="OrderTypes" ToRole="DutyInfo" />
+          <NavigationProperty Name="OrderSubTypes" Relationship="Self.FK__OrderSubT__Order__71D1E811" FromRole="OrderTypes" ToRole="OrderSubTypes" />
+        </EntityType>
+        <EntityType Name="ReportingInfo">
+          <Key>
+            <PropertyRef Name="ReportingInfoID" />
+          </Key>
+          <Property Name="ReportingInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UIC" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="UICName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ConusOconusID" Type="Int16" />
+          <Property Name="City" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Zipcode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="RequirementInfoID" Type="Int32" />
+          <NavigationProperty Name="ConusOconu" Relationship="Self.FK__Reporting__Conus__01142BA1" FromRole="ReportingInfo" ToRole="ConusOconus" />
+          <NavigationProperty Name="RequirementInfo" Relationship="Self.FK__Reporting__Requi__02084FDA" FromRole="ReportingInfo" ToRole="RequirementInfo" />
+        </EntityType>
+        <EntityType Name="RequirementInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Source" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SourceID" Type="Int32" />
+          <Property Name="AdvertisementID" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="RequirementName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OperationExerciseEventID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ReportDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalDays" Type="Int16" />
+          <Property Name="RequirementStateID" Type="Int16" />
+          <Property Name="NumberofEnlisted" Type="Int16" />
+          <Property Name="NumberofOfficers" Type="Int16" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MissionID" Type="Int32" />
+          <Property Name="NROWSIDAvailable" Type="Int16" />
+          <Property Name="NROWSRequirementID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CandidateInfoes" Relationship="Self.FK__Candidate__Requi__5441852A" FromRole="RequirementInfo" ToRole="CandidateInfo" />
+          <NavigationProperty Name="DutyInfoes" Relationship="Self.FK__DutyInfo__Requir__7A672E12" FromRole="RequirementInfo" ToRole="DutyInfo" />
+          <NavigationProperty Name="MissionInfoes" Relationship="Self.FK__MissionIn__Requi__7C4F7684" FromRole="RequirementInfo" ToRole="MissionInfo" />
+          <NavigationProperty Name="ReportingInfoes" Relationship="Self.FK__Reporting__Requi__02084FDA" FromRole="RequirementInfo" ToRole="ReportingInfo" />
+          <NavigationProperty Name="RequirementOwners" Relationship="Self.FK__Requireme__Requi__3C69FB99" FromRole="RequirementInfo" ToRole="RequirementOwner" />
+        </EntityType>
+        <EntityType Name="RequirementOwner">
+          <Key>
+            <PropertyRef Name="RequirementOwnerID" />
+          </Key>
+          <Property Name="RequirementOwnerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PocName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PocPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PocEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PocOrganization" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RequirementInfoID" Type="Int32" />
+          <NavigationProperty Name="RequirementInfo" Relationship="Self.FK__Requireme__Requi__3C69FB99" FromRole="RequirementOwner" ToRole="RequirementInfo" />
+        </EntityType>
+        <EntityType Name="RequirementState">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="Int16" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SecurityClearanceType">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderBy" Type="Int16" />
+          <NavigationProperty Name="CandidateInfoes" Relationship="Self.FK__Candidate__Secur__5BE2A6F2" FromRole="SecurityClearanceType" ToRole="CandidateInfo" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="YesNo">
+          <Key>
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Value" Type="Int16" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CandidateInfoes" Relationship="Self.FK__Candidate__Secur__5629CD9C" FromRole="YesNo" ToRole="CandidateInfo" />
+          <NavigationProperty Name="DutyInfoes" Relationship="Self.FK__DutyInfo__DutyAf__76969D2E" FromRole="YesNo" ToRole="DutyInfo" />
+          <NavigationProperty Name="DutyInfoes1" Relationship="Self.FK__DutyInfo__PCS__797309D9" FromRole="YesNo" ToRole="DutyInfo" />
+        </EntityType>
+        <EntityType Name="DAILY_DELTA">
+          <Key>
+            <PropertyRef Name="REQUIREMENT_ID" />
+          </Key>
+          <Property Name="REQUIREMENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="MISSION_ID" Type="Int32" />
+          <Property Name="REQUIREMENT_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="REQUIREMENT_STATE" Type="Byte" />
+          <Property Name="FILL_MODE" Type="Int16" />
+          <Property Name="NUMBER_ENLISTED" Type="Int16" />
+          <Property Name="NUMBER_OFFICERS" Type="Int16" />
+          <Property Name="REPORT_DATE" Type="DateTime" Precision="0" />
+          <Property Name="END_DATE" Type="DateTime" Precision="0" />
+          <Property Name="TOTAL_DAYS" Type="Int16" />
+          <Property Name="UIC" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="UIC_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_CITY" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_STATE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_ZIP_CODE" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_COUNTRY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="POC_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="POC_PHONE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="POC_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OPERATION_EXERCISE_EVENT_ID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_TYPE_CODE" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_SUBTYPE_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_ABOARD_SHIP_IND" Type="Byte" />
+          <Property Name="PCS_IND" Type="Byte" />
+          <Property Name="MINIMUM_RANK" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="MAXIMUM_RANK" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DESIGNATOR" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="RATE_RANK" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="NOBC" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="NEC" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="AQD" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="QUALIFICATIONS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SECURITY_CLEARANCE_REQUIRED" Type="Byte" />
+          <Property Name="SECURITY_CLEARANCE_TYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="CONUS_OCONUS_IND" Type="Byte" />
+          <Property Name="SOURCE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="All_View">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="CreatedDate" />
+            <PropertyRef Name="Source" />
+          </Key>
+          <Property Name="AdvertisementID" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="CandidateInfoID" Type="Int32" />
+          <Property Name="MinimumRank" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="MaximumRank" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Designator" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="AQD" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="NOBC" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="NEC" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Qualifications" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityClearanceTypeID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityClearanceRequiredID" Type="Int16" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="PCS" Type="Int16" />
+          <Property Name="DutyAfloatID" Type="Int16" />
+          <Property Name="OrderSubTypeID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="OrderTypeID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="DutyInfoID" Type="Int32" />
+          <Property Name="MissionID" Type="Int32" />
+          <Property Name="MissionName" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="MissionReportDate" Type="DateTime" Precision="3" />
+          <Property Name="MissionEndDate" Type="DateTime" Precision="3" />
+          <Property Name="ReportingInfoID" Type="Int32" />
+          <Property Name="UIC" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="UICName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ConusOconusID" Type="Int16" />
+          <Property Name="City" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Zipcode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RequirementName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OperationExerciseEventID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ReportDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalDays" Type="Int16" />
+          <Property Name="RequirementStateID" Type="Int16" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NumberofOfficers" Type="Int16" />
+          <Property Name="NumberofEnlisted" Type="Int16" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PocOrganization" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PocEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PocPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PocName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RequirementOwnerID" Type="Int32" />
+          <Property Name="ConOcon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ClearanceType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OpEvEx" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ReqState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrdType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrdSubType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NROWSIDAvailable" Type="Int16" />
+          <Property Name="NROWSRequirementID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Source" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RankSwitch" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DD_View">
+          <Key>
+            <PropertyRef Name="REQUIREMENT_ID" />
+          </Key>
+          <Property Name="REQUIREMENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="MISSION_ID" Type="Int32" />
+          <Property Name="REQUIREMENT_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="REQUIREMENT_STATE" Type="Byte" />
+          <Property Name="FILL_MODE" Type="Int16" />
+          <Property Name="NUMBER_ENLISTED" Type="Int16" />
+          <Property Name="NUMBER_OFFICERS" Type="Int16" />
+          <Property Name="REPORT_DATE" Type="DateTime" Precision="0" />
+          <Property Name="END_DATE" Type="DateTime" Precision="0" />
+          <Property Name="TOTAL_DAYS" Type="Int16" />
+          <Property Name="UIC" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="UIC_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_CITY" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_STATE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_ZIP_CODE" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_COUNTRY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="POC_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="POC_PHONE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="POC_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OPERATION_EXERCISE_EVENT_ID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_TYPE_CODE" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_SUBTYPE_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DUTY_ABOARD_SHIP_IND" Type="Byte" />
+          <Property Name="PCS_IND" Type="Byte" />
+          <Property Name="MINIMUM_RANK" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="MAXIMUM_RANK" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DESIGNATOR" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="RATE_RANK" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="NOBC" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="NEC" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="AQD" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="QUALIFICATIONS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SECURITY_CLEARANCE_REQUIRED" Type="Byte" />
+          <Property Name="SECURITY_CLEARANCE_TYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="CONUS_OCONUS_IND" Type="Byte" />
+          <Property Name="SOURCE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Candidate__Requi__5441852A">
+          <End Role="RequirementInfo" Type="Self.RequirementInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CandidateInfo" Type="Self.CandidateInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequirementInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CandidateInfo">
+              <PropertyRef Name="RequirementInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Candidate__Secur__5629CD9C">
+          <End Role="YesNo" Type="Self.YesNo" Multiplicity="0..1" />
+          <End Role="CandidateInfo" Type="Self.CandidateInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YesNo">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="CandidateInfo">
+              <PropertyRef Name="SecurityClearanceRequiredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Candidate__Secur__5BE2A6F2">
+          <End Role="SecurityClearanceType" Type="Self.SecurityClearanceType" Multiplicity="0..1" />
+          <End Role="CandidateInfo" Type="Self.CandidateInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecurityClearanceType">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="CandidateInfo">
+              <PropertyRef Name="SecurityClearanceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reporting__Conus__01142BA1">
+          <End Role="ConusOconus" Type="Self.ConusOconu" Multiplicity="0..1" />
+          <End Role="ReportingInfo" Type="Self.ReportingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConusOconus">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="ReportingInfo">
+              <PropertyRef Name="ConusOconusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DutyInfo__DutyAf__76969D2E">
+          <End Role="YesNo" Type="Self.YesNo" Multiplicity="0..1" />
+          <End Role="DutyInfo" Type="Self.DutyInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YesNo">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="DutyInfo">
+              <PropertyRef Name="DutyAfloatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DutyInfo__OrderS__778AC167">
+          <End Role="OrderSubTypes" Type="Self.OrderSubType" Multiplicity="0..1" />
+          <End Role="DutyInfo" Type="Self.DutyInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderSubTypes">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="DutyInfo">
+              <PropertyRef Name="OrderSubTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DutyInfo__OrderT__787EE5A0">
+          <End Role="OrderTypes" Type="Self.OrderType" Multiplicity="1" />
+          <End Role="DutyInfo" Type="Self.DutyInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderTypes">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="DutyInfo">
+              <PropertyRef Name="OrderTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DutyInfo__PCS__797309D9">
+          <End Role="YesNo" Type="Self.YesNo" Multiplicity="0..1" />
+          <End Role="DutyInfo" Type="Self.DutyInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YesNo">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="DutyInfo">
+              <PropertyRef Name="PCS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DutyInfo__Requir__7A672E12">
+          <End Role="RequirementInfo" Type="Self.RequirementInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DutyInfo" Type="Self.DutyInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequirementInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DutyInfo">
+              <PropertyRef Name="RequirementInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MissionIn__Requi__7C4F7684">
+          <End Role="RequirementInfo" Type="Self.RequirementInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MissionInfo" Type="Self.MissionInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequirementInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MissionInfo">
+              <PropertyRef Name="RequirementInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderSubT__Order__71D1E811">
+          <End Role="OrderTypes" Type="Self.OrderType" Multiplicity="1" />
+          <End Role="OrderSubTypes" Type="Self.OrderSubType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderTypes">
+              <PropertyRef Name="Value" />
+            </Principal>
+            <Dependent Role="OrderSubTypes">
+              <PropertyRef Name="OrderTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reporting__Requi__02084FDA">
+          <End Role="RequirementInfo" Type="Self.RequirementInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReportingInfo" Type="Self.ReportingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequirementInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReportingInfo">
+              <PropertyRef Name="RequirementInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Requireme__Requi__3C69FB99">
+          <End Role="RequirementInfo" Type="Self.RequirementInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RequirementOwner" Type="Self.RequirementOwner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequirementInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RequirementOwner">
+              <PropertyRef Name="RequirementInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Advertisement_PortalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AuditGetRequirements" EntityType="Self.AuditGetRequirement" />
+          <EntitySet Name="CandidateInfoes" EntityType="Self.CandidateInfo" />
+          <EntitySet Name="ConusOconus" EntityType="Self.ConusOconu" />
+          <EntitySet Name="DutyInfoes" EntityType="Self.DutyInfo" />
+          <EntitySet Name="MissionInfoes" EntityType="Self.MissionInfo" />
+          <EntitySet Name="NROWS_AD_FLEET_EXERCISE" EntityType="Self.NROWS_AD_FLEET_EXERCISE" />
+          <EntitySet Name="NROWS_AD_LK_ADSW_AT_TYPES" EntityType="Self.NROWS_AD_LK_ADSW_AT_TYPES" />
+          <EntitySet Name="NROWS_AD_LK_ORDER_TYPE" EntityType="Self.NROWS_AD_LK_ORDER_TYPE" />
+          <EntitySet Name="NROWS_AD_LK_TYPE_SECURITY" EntityType="Self.NROWS_AD_LK_TYPE_SECURITY" />
+          <EntitySet Name="NROWS_AD_MISSION" EntityType="Self.NROWS_AD_MISSION" />
+          <EntitySet Name="NROWS_AD_REQUIREMENT_OWNER" EntityType="Self.NROWS_AD_REQUIREMENT_OWNER" />
+          <EntitySet Name="OperationEventExercises" EntityType="Self.OperationEventExercise" />
+          <EntitySet Name="OrderSubTypes" EntityType="Self.OrderSubType" />
+          <EntitySet Name="OrderTypes" EntityType="Self.OrderType" />
+          <EntitySet Name="ReportingInfoes" EntityType="Self.ReportingInfo" />
+          <EntitySet Name="RequirementInfoes" EntityType="Self.RequirementInfo" />
+          <EntitySet Name="RequirementOwners" EntityType="Self.RequirementOwner" />
+          <EntitySet Name="RequirementStates" EntityType="Self.RequirementState" />
+          <EntitySet Name="SecurityClearanceTypes" EntityType="Self.SecurityClearanceType" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="YesNoes" EntityType="Self.YesNo" />
+          <EntitySet Name="DAILY_DELTA" EntityType="Self.DAILY_DELTA" />
+          <EntitySet Name="All_View" EntityType="Self.All_View" />
+          <EntitySet Name="DD_View" EntityType="Self.DD_View" />
+          <AssociationSet Name="FK__Candidate__Requi__5441852A" Association="Self.FK__Candidate__Requi__5441852A">
+            <End Role="RequirementInfo" EntitySet="RequirementInfoes" />
+            <End Role="CandidateInfo" EntitySet="CandidateInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Candidate__Secur__5629CD9C" Association="Self.FK__Candidate__Secur__5629CD9C">
+            <End Role="YesNo" EntitySet="YesNoes" />
+            <End Role="CandidateInfo" EntitySet="CandidateInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Candidate__Secur__5BE2A6F2" Association="Self.FK__Candidate__Secur__5BE2A6F2">
+            <End Role="SecurityClearanceType" EntitySet="SecurityClearanceTypes" />
+            <End Role="CandidateInfo" EntitySet="CandidateInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reporting__Conus__01142BA1" Association="Self.FK__Reporting__Conus__01142BA1">
+            <End Role="ConusOconus" EntitySet="ConusOconus" />
+            <End Role="ReportingInfo" EntitySet="ReportingInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DutyInfo__DutyAf__76969D2E" Association="Self.FK__DutyInfo__DutyAf__76969D2E">
+            <End Role="YesNo" EntitySet="YesNoes" />
+            <End Role="DutyInfo" EntitySet="DutyInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DutyInfo__OrderS__778AC167" Association="Self.FK__DutyInfo__OrderS__778AC167">
+            <End Role="OrderSubTypes" EntitySet="OrderSubTypes" />
+            <End Role="DutyInfo" EntitySet="DutyInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DutyInfo__OrderT__787EE5A0" Association="Self.FK__DutyInfo__OrderT__787EE5A0">
+            <End Role="OrderTypes" EntitySet="OrderTypes" />
+            <End Role="DutyInfo" EntitySet="DutyInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DutyInfo__PCS__797309D9" Association="Self.FK__DutyInfo__PCS__797309D9">
+            <End Role="YesNo" EntitySet="YesNoes" />
+            <End Role="DutyInfo" EntitySet="DutyInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DutyInfo__Requir__7A672E12" Association="Self.FK__DutyInfo__Requir__7A672E12">
+            <End Role="RequirementInfo" EntitySet="RequirementInfoes" />
+            <End Role="DutyInfo" EntitySet="DutyInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MissionIn__Requi__7C4F7684" Association="Self.FK__MissionIn__Requi__7C4F7684">
+            <End Role="RequirementInfo" EntitySet="RequirementInfoes" />
+            <End Role="MissionInfo" EntitySet="MissionInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderSubT__Order__71D1E811" Association="Self.FK__OrderSubT__Order__71D1E811">
+            <End Role="OrderTypes" EntitySet="OrderTypes" />
+            <End Role="OrderSubTypes" EntitySet="OrderSubTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reporting__Requi__02084FDA" Association="Self.FK__Reporting__Requi__02084FDA">
+            <End Role="RequirementInfo" EntitySet="RequirementInfoes" />
+            <End Role="ReportingInfo" EntitySet="ReportingInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Requireme__Requi__3C69FB99" Association="Self.FK__Requireme__Requi__3C69FB99">
+            <End Role="RequirementInfo" EntitySet="RequirementInfoes" />
+            <End Role="RequirementOwner" EntitySet="RequirementOwners" />
+          </AssociationSet>
+          <FunctionImport Name="DeleteRequirement">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDailyDelta" ReturnType="Collection(Advertisement_PortalModel.GetDailyDelta_Result)" />
+          <FunctionImport Name="GetRequirementByID" ReturnType="Collection(Advertisement_PortalModel.GetRequirementByID_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetRequirementByRequirementID" ReturnType="Collection(Advertisement_PortalModel.GetRequirementByRequirementID_Result)">
+            <Parameter Name="AdvertisementId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetRequirements" ReturnType="Collection(Advertisement_PortalModel.GetRequirements_Result)">
+            <Parameter Name="AdvertisementID" Mode="In" Type="String" />
+            <Parameter Name="NROWSRequirementID" Mode="In" Type="String" />
+            <Parameter Name="Designator" Mode="In" Type="String" />
+            <Parameter Name="Rating" Mode="In" Type="String" />
+            <Parameter Name="NOBC" Mode="In" Type="String" />
+            <Parameter Name="NEC" Mode="In" Type="String" />
+            <Parameter Name="MissionName" Mode="In" Type="String" />
+            <Parameter Name="RequirementName" Mode="In" Type="String" />
+            <Parameter Name="OrderType" Mode="In" Type="String" />
+            <Parameter Name="MinRank" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertRequirement" ReturnType="Collection(Int32)">
+            <Parameter Name="MinimumRank" Mode="In" Type="String" />
+            <Parameter Name="MaximumRank" Mode="In" Type="String" />
+            <Parameter Name="Designator" Mode="In" Type="String" />
+            <Parameter Name="AQD" Mode="In" Type="String" />
+            <Parameter Name="NOBC" Mode="In" Type="String" />
+            <Parameter Name="Rating" Mode="In" Type="String" />
+            <Parameter Name="NEC" Mode="In" Type="String" />
+            <Parameter Name="Qualifications" Mode="In" Type="String" />
+            <Parameter Name="SecurityClearanceTypeID" Mode="In" Type="String" />
+            <Parameter Name="SecurityClearanceRequiredID" Mode="In" Type="Int16" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="PCS" Mode="In" Type="Int16" />
+            <Parameter Name="DutyAfloatID" Mode="In" Type="Int16" />
+            <Parameter Name="OrderSubTypeID" Mode="In" Type="String" />
+            <Parameter Name="OrderTypeID" Mode="In" Type="String" />
+            <Parameter Name="MissionName" Mode="In" Type="String" />
+            <Parameter Name="MissionReportDate" Mode="In" Type="DateTime" />
+            <Parameter Name="MissionEndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UIC" Mode="In" Type="String" />
+            <Parameter Name="UICName" Mode="In" Type="String" />
+            <Parameter Name="ConusOconusID" Mode="In" Type="Int16" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Zipcode" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="RequirementName" Mode="In" Type="String" />
+            <Parameter Name="OperationExerciseEventID" Mode="In" Type="String" />
+            <Parameter Name="ReportDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="TotalDays" Mode="In" Type="Int16" />
+            <Parameter Name="RequirementStateID" Mode="In" Type="Int16" />
+            <Parameter Name="Comments" Mode="In" Type="String" />
+            <Parameter Name="NumberofOfficers" Mode="In" Type="Int16" />
+            <Parameter Name="NumberofEnlisted" Mode="In" Type="Int16" />
+            <Parameter Name="PocOrganization" Mode="In" Type="String" />
+            <Parameter Name="PocEmail" Mode="In" Type="String" />
+            <Parameter Name="PocPhone" Mode="In" Type="String" />
+            <Parameter Name="PocName" Mode="In" Type="String" />
+            <Parameter Name="NROWSRequirementID" Mode="In" Type="String" />
+            <Parameter Name="NROWSIDAvailable" Mode="In" Type="Int16" />
+            <Parameter Name="Source" Mode="In" Type="String" />
+            <Parameter Name="RankSwitch" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RHS_Merge_Data" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Daily_Delta" />
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Advertisement_PortalModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Advertisement_PortalModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Import_From_RHS_Global" />
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="UpdateRequirement">
+            <Parameter Name="MinimumRank" Mode="In" Type="String" />
+            <Parameter Name="MaximumRank" Mode="In" Type="String" />
+            <Parameter Name="Designator" Mode="In" Type="String" />
+            <Parameter Name="AQD" Mode="In" Type="String" />
+            <Parameter Name="NOBC" Mode="In" Type="String" />
+            <Parameter Name="Rating" Mode="In" Type="String" />
+            <Parameter Name="NEC" Mode="In" Type="String" />
+            <Parameter Name="Qualifications" Mode="In" Type="String" />
+            <Parameter Name="SecurityClearanceTypeID" Mode="In" Type="String" />
+            <Parameter Name="SecurityClearanceRequiredID" Mode="In" Type="Int16" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="PCS" Mode="In" Type="Int16" />
+            <Parameter Name="DutyAfloatID" Mode="In" Type="Int16" />
+            <Parameter Name="OrderSubTypeID" Mode="In" Type="String" />
+            <Parameter Name="OrderTypeID" Mode="In" Type="String" />
+            <Parameter Name="MissionName" Mode="In" Type="String" />
+            <Parameter Name="MissionReportDate" Mode="In" Type="DateTime" />
+            <Parameter Name="MissionEndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UIC" Mode="In" Type="String" />
+            <Parameter Name="UICName" Mode="In" Type="String" />
+            <Parameter Name="ConusOconusID" Mode="In" Type="Int16" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Zipcode" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="RequirementName" Mode="In" Type="String" />
+            <Parameter Name="OperationExerciseEventID" Mode="In" Type="String" />
+            <Parameter Name="ReportDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="TotalDays" Mode="In" Type="Int16" />
+            <Parameter Name="RequirementStateID" Mode="In" Type="Int16" />
+            <Parameter Name="Comments" Mode="In" Type="String" />
+            <Parameter Name="NumberofOfficers" Mode="In" Type="Int16" />
+            <Parameter Name="NumberofEnlisted" Mode="In" Type="Int16" />
+            <Parameter Name="PocOrganization" Mode="In" Type="String" />
+            <Parameter Name="PocEmail" Mode="In" Type="String" />
+            <Parameter Name="PocPhone" Mode="In" Type="String" />
+            <Parameter Name="PocName" Mode="In" Type="String" />
+            <Parameter Name="NROWSIDAvailable" Mode="In" Type="Int16" />
+            <Parameter Name="NROWSRequirementID" Mode="In" Type="String" />
+            <Parameter Name="Source" Mode="In" Type="String" />
+            <Parameter Name="RankSwitch" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetDailyDelta_Result">
+          <Property Type="Int32" Name="REQUIREMENT_ID" Nullable="false" />
+          <Property Type="Int32" Name="MISSION_ID" Nullable="true" />
+          <Property Type="String" Name="REQUIREMENT_NAME" Nullable="true" MaxLength="255" />
+          <Property Type="Byte" Name="REQUIREMENT_STATE" Nullable="true" />
+          <Property Type="Int16" Name="NUMBER_ENLISTED" Nullable="true" />
+          <Property Type="Int16" Name="FILL_MODE" Nullable="true" />
+          <Property Type="String" Name="SECURITY_CLEARANCE_TYPE" Nullable="true" MaxLength="2" />
+          <Property Type="Byte" Name="SECURITY_CLEARANCE_REQUIRED" Nullable="true" />
+          <Property Type="String" Name="GENDER" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="QUALIFICATIONS" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AQD" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="NEC" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="NOBC" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="RATE_RANK" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="DESIGNATOR" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="MAXIMUM_RANK" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="MINIMUM_RANK" Nullable="true" MaxLength="3" />
+          <Property Type="Byte" Name="PCS_IND" Nullable="true" />
+          <Property Type="Byte" Name="DUTY_ABOARD_SHIP_IND" Nullable="true" />
+          <Property Type="String" Name="ORDER_SUBTYPE_CODE" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ORDER_TYPE_CODE" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="OPERATION_EXERCISE_EVENT_ID" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="POC_EMAIL" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="POC_PHONE" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="POC_NAME" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DUTY_COUNTRY" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="DUTY_ZIP_CODE" Nullable="true" MaxLength="9" />
+          <Property Type="String" Name="DUTY_STATE" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="DUTY_CITY" Nullable="true" MaxLength="36" />
+          <Property Type="String" Name="UIC_NAME" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="UIC" Nullable="true" MaxLength="5" />
+          <Property Type="Int16" Name="TOTAL_DAYS" Nullable="true" />
+          <Property Type="DateTime" Name="END_DATE" Nullable="true" />
+          <Property Type="DateTime" Name="REPORT_DATE" Nullable="true" />
+          <Property Type="Int16" Name="NUMBER_OFFICERS" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetRequirementByID_Result">
+          <Property Type="String" Name="AdvertisementID" Nullable="true" MaxLength="9" />
+          <Property Type="Int32" Name="CandidateInfoID" Nullable="true" />
+          <Property Type="String" Name="MinimumRank" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="MaximumRank" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Designator" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="AQD" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="NOBC" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Rating" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="NEC" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Qualifications" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SecurityClearanceTypeID" Nullable="true" MaxLength="2" />
+          <Property Type="Int16" Name="SecurityClearanceRequiredID" Nullable="true" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="1" />
+          <Property Type="Int16" Name="PCS" Nullable="true" />
+          <Property Type="Int16" Name="DutyAfloatID" Nullable="true" />
+          <Property Type="String" Name="OrderSubTypeID" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="OrderTypeID" Nullable="true" MaxLength="6" />
+          <Property Type="Int32" Name="DutyInfoID" Nullable="true" />
+          <Property Type="Int32" Name="MissionID" Nullable="true" />
+          <Property Type="String" Name="MissionName" Nullable="true" MaxLength="400" />
+          <Property Type="DateTime" Name="MissionReportDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="MissionEndDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ReportingInfoID" Nullable="true" />
+          <Property Type="String" Name="UIC" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="UICName" Nullable="true" MaxLength="100" />
+          <Property Type="Int16" Name="ConusOconusID" Nullable="true" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="36" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="Zipcode" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="RequirementName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="OperationExerciseEventID" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="ReportDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="Int16" Name="TotalDays" Nullable="true" />
+          <Property Type="Int16" Name="RequirementStateID" Nullable="true" />
+          <Property Type="String" Name="Comments" Nullable="true" MaxLength="Max" />
+          <Property Type="Int16" Name="NumberofOfficers" Nullable="true" />
+          <Property Type="Int16" Name="NumberofEnlisted" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="PocOrganization" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PocEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PocPhone" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="PocName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="RequirementOwnerID" Nullable="true" />
+          <Property Type="String" Name="ConOcon" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ClearanceType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OpEvEx" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ReqState" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OrdType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OrdSubType" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NROWSRequirementID" Nullable="true" MaxLength="25" />
+          <Property Type="Int16" Name="NROWSIDAvailable" Nullable="true" />
+          <Property Type="String" Name="Source" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="RankSwitch" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="GetRequirementByRequirementID_Result">
+          <Property Type="String" Name="AdvertisementID" Nullable="true" MaxLength="9" />
+          <Property Type="Int32" Name="CandidateInfoID" Nullable="true" />
+          <Property Type="String" Name="MinimumRank" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="MaximumRank" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Designator" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="AQD" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="NOBC" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Rating" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="NEC" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Qualifications" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SecurityClearanceTypeID" Nullable="true" MaxLength="2" />
+          <Property Type="Int16" Name="SecurityClearanceRequiredID" Nullable="true" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="1" />
+          <Property Type="Int16" Name="PCS" Nullable="true" />
+          <Property Type="Int16" Name="DutyAfloatID" Nullable="true" />
+          <Property Type="String" Name="OrderSubTypeID" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="OrderTypeID" Nullable="true" MaxLength="6" />
+          <Property Type="Int32" Name="DutyInfoID" Nullable="true" />
+          <Property Type="Int32" Name="MissionID" Nullable="true" />
+          <Property Type="String" Name="MissionName" Nullable="true" MaxLength="400" />
+          <Property Type="DateTime" Name="MissionReportDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="MissionEndDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ReportingInfoID" Nullable="true" />
+          <Property Type="String" Name="UIC" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="UICName" Nullable="true" MaxLength="100" />
+          <Property Type="Int16" Name="ConusOconusID" Nullable="true" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="36" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="Zipcode" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="RequirementName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="OperationExerciseEventID" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="ReportDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="Int16" Name="TotalDays" Nullable="true" />
+          <Property Type="Int16" Name="RequirementStateID" Nullable="true" />
+          <Property Type="String" Name="Comments" Nullable="true" MaxLength="Max" />
+          <Property Type="Int16" Name="NumberofOfficers" Nullable="true" />
+          <Property Type="Int16" Name="NumberofEnlisted" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="PocOrganization" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PocEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PocPhone" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="PocName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="RequirementOwnerID" Nullable="true" />
+          <Property Type="String" Name="ConOcon" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ClearanceType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OpEvEx" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ReqState" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OrdType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OrdSubType" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NROWSRequirementID" Nullable="true" MaxLength="25" />
+          <Property Type="Int16" Name="NROWSIDAvailable" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetRequirements_Result">
+          <Property Type="String" Name="AdvertisementID" Nullable="true" MaxLength="9" />
+          <Property Type="Int32" Name="CandidateInfoID" Nullable="true" />
+          <Property Type="String" Name="MinimumRank" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="MaximumRank" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Designator" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="AQD" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="NOBC" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Rating" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="NEC" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Qualifications" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SecurityClearanceTypeID" Nullable="true" MaxLength="2" />
+          <Property Type="Int16" Name="SecurityClearanceRequiredID" Nullable="true" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="1" />
+          <Property Type="Int16" Name="PCS" Nullable="true" />
+          <Property Type="Int16" Name="DutyAfloatID" Nullable="true" />
+          <Property Type="String" Name="OrderSubTypeID" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="OrderTypeID" Nullable="true" MaxLength="6" />
+          <Property Type="Int32" Name="DutyInfoID" Nullable="true" />
+          <Property Type="Int32" Name="MissionID" Nullable="true" />
+          <Property Type="String" Name="MissionName" Nullable="true" MaxLength="400" />
+          <Property Type="DateTime" Name="MissionReportDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="MissionEndDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ReportingInfoID" Nullable="true" />
+          <Property Type="String" Name="UIC" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="UICName" Nullable="true" MaxLength="100" />
+          <Property Type="Int16" Name="ConusOconusID" Nullable="true" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="36" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="Zipcode" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="RequirementName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="OperationExerciseEventID" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="ReportDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="Int16" Name="TotalDays" Nullable="true" />
+          <Property Type="Int16" Name="RequirementStateID" Nullable="true" />
+          <Property Type="String" Name="Comments" Nullable="true" MaxLength="Max" />
+          <Property Type="Int16" Name="NumberofOfficers" Nullable="true" />
+          <Property Type="Int16" Name="NumberofEnlisted" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="PocOrganization" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PocEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PocPhone" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="PocName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="RequirementOwnerID" Nullable="true" />
+          <Property Type="String" Name="ConOcon" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ClearanceType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OpEvEx" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ReqState" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OrdType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OrdSubType" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NROWSRequirementID" Nullable="true" MaxLength="25" />
+          <Property Type="Int16" Name="NROWSIDAvailable" Nullable="true" />
+          <Property Type="String" Name="Source" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="RankSwitch" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Advertisement_PortalModelStoreContainer" CdmEntityContainer="Advertisement_PortalEntities">
+          <EntitySetMapping Name="AuditGetRequirements">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.AuditGetRequirement">
+              <MappingFragment StoreEntitySet="AuditGetRequirements">
+                <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
+                <ScalarProperty Name="Designator" ColumnName="Designator" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="NOBC" ColumnName="NOBC" />
+                <ScalarProperty Name="NEC" ColumnName="NEC" />
+                <ScalarProperty Name="MissionName" ColumnName="MissionName" />
+                <ScalarProperty Name="RequirementName" ColumnName="RequirementName" />
+                <ScalarProperty Name="AdvertisementID" ColumnName="AdvertisementID" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="RankSwitch" ColumnName="RankSwitch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateInfoes">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.CandidateInfo">
+              <MappingFragment StoreEntitySet="CandidateInfo">
+                <ScalarProperty Name="CandidateInfoID" ColumnName="CandidateInfoID" />
+                <ScalarProperty Name="MinimumRank" ColumnName="MinimumRank" />
+                <ScalarProperty Name="MaximumRank" ColumnName="MaximumRank" />
+                <ScalarProperty Name="Designator" ColumnName="Designator" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="NOBC" ColumnName="NOBC" />
+                <ScalarProperty Name="NEC" ColumnName="NEC" />
+                <ScalarProperty Name="AQD" ColumnName="AQD" />
+                <ScalarProperty Name="Qualifications" ColumnName="Qualifications" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="SecurityClearanceRequiredID" ColumnName="SecurityClearanceRequiredID" />
+                <ScalarProperty Name="SecurityClearanceTypeID" ColumnName="SecurityClearanceTypeID" />
+                <ScalarProperty Name="RequirementInfoID" ColumnName="RequirementInfoID" />
+                <ScalarProperty Name="RankSwitch" ColumnName="RankSwitch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConusOconus">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.ConusOconu">
+              <MappingFragment StoreEntitySet="ConusOconus">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DutyInfoes">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.DutyInfo">
+              <MappingFragment StoreEntitySet="DutyInfo">
+                <ScalarProperty Name="DutyInfoID" ColumnName="DutyInfoID" />
+                <ScalarProperty Name="OrderTypeID" ColumnName="OrderTypeID" />
+                <ScalarProperty Name="OrderSubTypeID" ColumnName="OrderSubTypeID" />
+                <ScalarProperty Name="DutyAfloatID" ColumnName="DutyAfloatID" />
+                <ScalarProperty Name="PCS" ColumnName="PCS" />
+                <ScalarProperty Name="RequirementInfoID" ColumnName="RequirementInfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MissionInfoes">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.MissionInfo">
+              <MappingFragment StoreEntitySet="MissionInfo">
+                <ScalarProperty Name="MissionID" ColumnName="MissionID" />
+                <ScalarProperty Name="MissionName" ColumnName="MissionName" />
+                <ScalarProperty Name="MissionReportDate" ColumnName="MissionReportDate" />
+                <ScalarProperty Name="MissionEndDate" ColumnName="MissionEndDate" />
+                <ScalarProperty Name="RequirementInfoID" ColumnName="RequirementInfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NROWS_AD_FLEET_EXERCISE">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.NROWS_AD_FLEET_EXERCISE">
+              <MappingFragment StoreEntitySet="NROWS_AD_FLEET_EXERCISE">
+                <ScalarProperty Name="FLEET_EXERCISE_CODE" ColumnName="FLEET_EXERCISE_CODE" />
+                <ScalarProperty Name="FLEET_EXERCISE_DESCRIPTION" ColumnName="FLEET_EXERCISE_DESCRIPTION" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="CHANGE_COMMENT" ColumnName="CHANGE_COMMENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NROWS_AD_LK_ADSW_AT_TYPES">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.NROWS_AD_LK_ADSW_AT_TYPES">
+              <MappingFragment StoreEntitySet="NROWS_AD_LK_ADSW_AT_TYPES">
+                <ScalarProperty Name="LK_ADSW_ID" ColumnName="LK_ADSW_ID" />
+                <ScalarProperty Name="ADSW_TYPE_CODE" ColumnName="ADSW_TYPE_CODE" />
+                <ScalarProperty Name="ADSW_DESCRIPTION" ColumnName="ADSW_DESCRIPTION" />
+                <ScalarProperty Name="ADSW_SHORT_DESCRIPTION" ColumnName="ADSW_SHORT_DESCRIPTION" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NROWS_AD_LK_ORDER_TYPE">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.NROWS_AD_LK_ORDER_TYPE">
+              <MappingFragment StoreEntitySet="NROWS_AD_LK_ORDER_TYPE">
+                <ScalarProperty Name="ORDER_TYPE_CODE" ColumnName="ORDER_TYPE_CODE" />
+                <ScalarProperty Name="ORDER_TYPE" ColumnName="ORDER_TYPE" />
+                <ScalarProperty Name="SHORT_DESCRIPTION" ColumnName="SHORT_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NROWS_AD_LK_TYPE_SECURITY">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.NROWS_AD_LK_TYPE_SECURITY">
+              <MappingFragment StoreEntitySet="NROWS_AD_LK_TYPE_SECURITY">
+                <ScalarProperty Name="SECURITY_ID" ColumnName="SECURITY_ID" />
+                <ScalarProperty Name="TYPE_OF_CLEARANCE" ColumnName="TYPE_OF_CLEARANCE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NROWS_AD_MISSION">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.NROWS_AD_MISSION">
+              <MappingFragment StoreEntitySet="NROWS_AD_MISSION">
+                <ScalarProperty Name="MISSION_ID" ColumnName="MISSION_ID" />
+                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="POC_NAME" ColumnName="POC_NAME" />
+                <ScalarProperty Name="POC_EMAIL" ColumnName="POC_EMAIL" />
+                <ScalarProperty Name="POC_PHONE" ColumnName="POC_PHONE" />
+                <ScalarProperty Name="POC_ORGANIZATION" ColumnName="POC_ORGANIZATION" />
+                <ScalarProperty Name="MISSION_COMMENTS" ColumnName="MISSION_COMMENTS" />
+                <ScalarProperty Name="MISSION_NAME" ColumnName="MISSION_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NROWS_AD_REQUIREMENT_OWNER">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.NROWS_AD_REQUIREMENT_OWNER">
+              <MappingFragment StoreEntitySet="NROWS_AD_REQUIREMENT_OWNER">
+                <ScalarProperty Name="REQUIREMENT_ID" ColumnName="REQUIREMENT_ID" />
+                <ScalarProperty Name="MISSION_ID" ColumnName="MISSION_ID" />
+                <ScalarProperty Name="REQUIREMENT_NAME" ColumnName="REQUIREMENT_NAME" />
+                <ScalarProperty Name="REQUIREMENT_STATE" ColumnName="REQUIREMENT_STATE" />
+                <ScalarProperty Name="FILL_MODE" ColumnName="FILL_MODE" />
+                <ScalarProperty Name="NUMBER_ENLISTED" ColumnName="NUMBER_ENLISTED" />
+                <ScalarProperty Name="NUMBER_OFFICERS" ColumnName="NUMBER_OFFICERS" />
+                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="TOTAL_DAYS" ColumnName="TOTAL_DAYS" />
+                <ScalarProperty Name="UIC" ColumnName="UIC" />
+                <ScalarProperty Name="UIC_NAME" ColumnName="UIC_NAME" />
+                <ScalarProperty Name="DUTY_CITY" ColumnName="DUTY_CITY" />
+                <ScalarProperty Name="DUTY_STATE" ColumnName="DUTY_STATE" />
+                <ScalarProperty Name="DUTY_ZIP_CODE" ColumnName="DUTY_ZIP_CODE" />
+                <ScalarProperty Name="DUTY_COUNTRY" ColumnName="DUTY_COUNTRY" />
+                <ScalarProperty Name="POC_NAME" ColumnName="POC_NAME" />
+                <ScalarProperty Name="POC_PHONE" ColumnName="POC_PHONE" />
+                <ScalarProperty Name="POC_EMAIL" ColumnName="POC_EMAIL" />
+                <ScalarProperty Name="OPERATION_EXERCISE_EVENT_ID" ColumnName="OPERATION_EXERCISE_EVENT_ID" />
+                <ScalarProperty Name="ORDER_TYPE_CODE" ColumnName="ORDER_TYPE_CODE" />
+                <ScalarProperty Name="ORDER_SUBTYPE_CODE" ColumnName="ORDER_SUBTYPE_CODE" />
+                <ScalarProperty Name="DUTY_ABOARD_SHIP_IND" ColumnName="DUTY_ABOARD_SHIP_IND" />
+                <ScalarProperty Name="PCS_IND" ColumnName="PCS_IND" />
+                <ScalarProperty Name="MINIMUM_RANK" ColumnName="MINIMUM_RANK" />
+                <ScalarProperty Name="MAXIMUM_RANK" ColumnName="MAXIMUM_RANK" />
+                <ScalarProperty Name="DESIGNATOR" ColumnName="DESIGNATOR" />
+                <ScalarProperty Name="RATE_RANK" ColumnName="RATE_RANK" />
+                <ScalarProperty Name="NOBC" ColumnName="NOBC" />
+                <ScalarProperty Name="NEC" ColumnName="NEC" />
+                <ScalarProperty Name="AQD" ColumnName="AQD" />
+                <ScalarProperty Name="QUALIFICATIONS" ColumnName="QUALIFICATIONS" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="SECURITY_CLEARANCE_REQUIRED" ColumnName="SECURITY_CLEARANCE_REQUIRED" />
+                <ScalarProperty Name="SECURITY_CLEARANCE_TYPE" ColumnName="SECURITY_CLEARANCE_TYPE" />
+                <ScalarProperty Name="CONUS_OCONUS_IND" ColumnName="CONUS_OCONUS_IND" />
+                <ScalarProperty Name="SOURCE" ColumnName="SOURCE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationEventExercises">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.OperationEventExercise">
+              <MappingFragment StoreEntitySet="OperationEventExercise">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderSubTypes">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.OrderSubType">
+              <MappingFragment StoreEntitySet="OrderSubTypes">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="OrderTypeID" ColumnName="OrderTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderTypes">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.OrderType">
+              <MappingFragment StoreEntitySet="OrderTypes">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportingInfoes">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.ReportingInfo">
+              <MappingFragment StoreEntitySet="ReportingInfo">
+                <ScalarProperty Name="ReportingInfoID" ColumnName="ReportingInfoID" />
+                <ScalarProperty Name="UIC" ColumnName="UIC" />
+                <ScalarProperty Name="UICName" ColumnName="UICName" />
+                <ScalarProperty Name="ConusOconusID" ColumnName="ConusOconusID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="RequirementInfoID" ColumnName="RequirementInfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequirementInfoes">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.RequirementInfo">
+              <MappingFragment StoreEntitySet="RequirementInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="SourceID" ColumnName="SourceID" />
+                <ScalarProperty Name="AdvertisementID" ColumnName="AdvertisementID" />
+                <ScalarProperty Name="RequirementName" ColumnName="RequirementName" />
+                <ScalarProperty Name="OperationExerciseEventID" ColumnName="OperationExerciseEventID" />
+                <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TotalDays" ColumnName="TotalDays" />
+                <ScalarProperty Name="RequirementStateID" ColumnName="RequirementStateID" />
+                <ScalarProperty Name="NumberofEnlisted" ColumnName="NumberofEnlisted" />
+                <ScalarProperty Name="NumberofOfficers" ColumnName="NumberofOfficers" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="MissionID" ColumnName="MissionID" />
+                <ScalarProperty Name="NROWSIDAvailable" ColumnName="NROWSIDAvailable" />
+                <ScalarProperty Name="NROWSRequirementID" ColumnName="NROWSRequirementID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequirementOwners">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.RequirementOwner">
+              <MappingFragment StoreEntitySet="RequirementOwner">
+                <ScalarProperty Name="RequirementOwnerID" ColumnName="RequirementOwnerID" />
+                <ScalarProperty Name="PocName" ColumnName="PocName" />
+                <ScalarProperty Name="PocPhone" ColumnName="PocPhone" />
+                <ScalarProperty Name="PocEmail" ColumnName="PocEmail" />
+                <ScalarProperty Name="PocOrganization" ColumnName="PocOrganization" />
+                <ScalarProperty Name="RequirementInfoID" ColumnName="RequirementInfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequirementStates">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.RequirementState">
+              <MappingFragment StoreEntitySet="RequirementState">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecurityClearanceTypes">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.SecurityClearanceType">
+              <MappingFragment StoreEntitySet="SecurityClearanceType">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YesNoes">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.YesNo">
+              <MappingFragment StoreEntitySet="YesNo">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DAILY_DELTA">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.DAILY_DELTA">
+              <MappingFragment StoreEntitySet="DAILY_DELTA">
+                <ScalarProperty Name="REQUIREMENT_ID" ColumnName="REQUIREMENT_ID" />
+                <ScalarProperty Name="MISSION_ID" ColumnName="MISSION_ID" />
+                <ScalarProperty Name="REQUIREMENT_NAME" ColumnName="REQUIREMENT_NAME" />
+                <ScalarProperty Name="REQUIREMENT_STATE" ColumnName="REQUIREMENT_STATE" />
+                <ScalarProperty Name="FILL_MODE" ColumnName="FILL_MODE" />
+                <ScalarProperty Name="NUMBER_ENLISTED" ColumnName="NUMBER_ENLISTED" />
+                <ScalarProperty Name="NUMBER_OFFICERS" ColumnName="NUMBER_OFFICERS" />
+                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="TOTAL_DAYS" ColumnName="TOTAL_DAYS" />
+                <ScalarProperty Name="UIC" ColumnName="UIC" />
+                <ScalarProperty Name="UIC_NAME" ColumnName="UIC_NAME" />
+                <ScalarProperty Name="DUTY_CITY" ColumnName="DUTY_CITY" />
+                <ScalarProperty Name="DUTY_STATE" ColumnName="DUTY_STATE" />
+                <ScalarProperty Name="DUTY_ZIP_CODE" ColumnName="DUTY_ZIP_CODE" />
+                <ScalarProperty Name="DUTY_COUNTRY" ColumnName="DUTY_COUNTRY" />
+                <ScalarProperty Name="POC_NAME" ColumnName="POC_NAME" />
+                <ScalarProperty Name="POC_PHONE" ColumnName="POC_PHONE" />
+                <ScalarProperty Name="POC_EMAIL" ColumnName="POC_EMAIL" />
+                <ScalarProperty Name="OPERATION_EXERCISE_EVENT_ID" ColumnName="OPERATION_EXERCISE_EVENT_ID" />
+                <ScalarProperty Name="ORDER_TYPE_CODE" ColumnName="ORDER_TYPE_CODE" />
+                <ScalarProperty Name="ORDER_SUBTYPE_CODE" ColumnName="ORDER_SUBTYPE_CODE" />
+                <ScalarProperty Name="DUTY_ABOARD_SHIP_IND" ColumnName="DUTY_ABOARD_SHIP_IND" />
+                <ScalarProperty Name="PCS_IND" ColumnName="PCS_IND" />
+                <ScalarProperty Name="MINIMUM_RANK" ColumnName="MINIMUM_RANK" />
+                <ScalarProperty Name="MAXIMUM_RANK" ColumnName="MAXIMUM_RANK" />
+                <ScalarProperty Name="DESIGNATOR" ColumnName="DESIGNATOR" />
+                <ScalarProperty Name="RATE_RANK" ColumnName="RATE_RANK" />
+                <ScalarProperty Name="NOBC" ColumnName="NOBC" />
+                <ScalarProperty Name="NEC" ColumnName="NEC" />
+                <ScalarProperty Name="AQD" ColumnName="AQD" />
+                <ScalarProperty Name="QUALIFICATIONS" ColumnName="QUALIFICATIONS" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="SECURITY_CLEARANCE_REQUIRED" ColumnName="SECURITY_CLEARANCE_REQUIRED" />
+                <ScalarProperty Name="SECURITY_CLEARANCE_TYPE" ColumnName="SECURITY_CLEARANCE_TYPE" />
+                <ScalarProperty Name="CONUS_OCONUS_IND" ColumnName="CONUS_OCONUS_IND" />
+                <ScalarProperty Name="SOURCE" ColumnName="SOURCE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="All_View">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.All_View">
+              <MappingFragment StoreEntitySet="All_View">
+                <ScalarProperty Name="AdvertisementID" ColumnName="AdvertisementID" />
+                <ScalarProperty Name="CandidateInfoID" ColumnName="CandidateInfoID" />
+                <ScalarProperty Name="MinimumRank" ColumnName="MinimumRank" />
+                <ScalarProperty Name="MaximumRank" ColumnName="MaximumRank" />
+                <ScalarProperty Name="Designator" ColumnName="Designator" />
+                <ScalarProperty Name="AQD" ColumnName="AQD" />
+                <ScalarProperty Name="NOBC" ColumnName="NOBC" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="NEC" ColumnName="NEC" />
+                <ScalarProperty Name="Qualifications" ColumnName="Qualifications" />
+                <ScalarProperty Name="SecurityClearanceTypeID" ColumnName="SecurityClearanceTypeID" />
+                <ScalarProperty Name="SecurityClearanceRequiredID" ColumnName="SecurityClearanceRequiredID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PCS" ColumnName="PCS" />
+                <ScalarProperty Name="DutyAfloatID" ColumnName="DutyAfloatID" />
+                <ScalarProperty Name="OrderSubTypeID" ColumnName="OrderSubTypeID" />
+                <ScalarProperty Name="OrderTypeID" ColumnName="OrderTypeID" />
+                <ScalarProperty Name="DutyInfoID" ColumnName="DutyInfoID" />
+                <ScalarProperty Name="MissionID" ColumnName="MissionID" />
+                <ScalarProperty Name="MissionName" ColumnName="MissionName" />
+                <ScalarProperty Name="MissionReportDate" ColumnName="MissionReportDate" />
+                <ScalarProperty Name="MissionEndDate" ColumnName="MissionEndDate" />
+                <ScalarProperty Name="ReportingInfoID" ColumnName="ReportingInfoID" />
+                <ScalarProperty Name="UIC" ColumnName="UIC" />
+                <ScalarProperty Name="UICName" ColumnName="UICName" />
+                <ScalarProperty Name="ConusOconusID" ColumnName="ConusOconusID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RequirementName" ColumnName="RequirementName" />
+                <ScalarProperty Name="OperationExerciseEventID" ColumnName="OperationExerciseEventID" />
+                <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TotalDays" ColumnName="TotalDays" />
+                <ScalarProperty Name="RequirementStateID" ColumnName="RequirementStateID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="NumberofOfficers" ColumnName="NumberofOfficers" />
+                <ScalarProperty Name="NumberofEnlisted" ColumnName="NumberofEnlisted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PocOrganization" ColumnName="PocOrganization" />
+                <ScalarProperty Name="PocEmail" ColumnName="PocEmail" />
+                <ScalarProperty Name="PocPhone" ColumnName="PocPhone" />
+                <ScalarProperty Name="PocName" ColumnName="PocName" />
+                <ScalarProperty Name="RequirementOwnerID" ColumnName="RequirementOwnerID" />
+                <ScalarProperty Name="ConOcon" ColumnName="ConOcon" />
+                <ScalarProperty Name="ClearanceType" ColumnName="ClearanceType" />
+                <ScalarProperty Name="OpEvEx" ColumnName="OpEvEx" />
+                <ScalarProperty Name="ReqState" ColumnName="ReqState" />
+                <ScalarProperty Name="OrdType" ColumnName="OrdType" />
+                <ScalarProperty Name="OrdSubType" ColumnName="OrdSubType" />
+                <ScalarProperty Name="NROWSIDAvailable" ColumnName="NROWSIDAvailable" />
+                <ScalarProperty Name="NROWSRequirementID" ColumnName="NROWSRequirementID" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="RankSwitch" ColumnName="RankSwitch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DD_View">
+            <EntityTypeMapping TypeName="Advertisement_PortalModel.DD_View">
+              <MappingFragment StoreEntitySet="DD_View">
+                <ScalarProperty Name="REQUIREMENT_ID" ColumnName="REQUIREMENT_ID" />
+                <ScalarProperty Name="MISSION_ID" ColumnName="MISSION_ID" />
+                <ScalarProperty Name="REQUIREMENT_NAME" ColumnName="REQUIREMENT_NAME" />
+                <ScalarProperty Name="REQUIREMENT_STATE" ColumnName="REQUIREMENT_STATE" />
+                <ScalarProperty Name="FILL_MODE" ColumnName="FILL_MODE" />
+                <ScalarProperty Name="NUMBER_ENLISTED" ColumnName="NUMBER_ENLISTED" />
+                <ScalarProperty Name="NUMBER_OFFICERS" ColumnName="NUMBER_OFFICERS" />
+                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="TOTAL_DAYS" ColumnName="TOTAL_DAYS" />
+                <ScalarProperty Name="UIC" ColumnName="UIC" />
+                <ScalarProperty Name="UIC_NAME" ColumnName="UIC_NAME" />
+                <ScalarProperty Name="DUTY_CITY" ColumnName="DUTY_CITY" />
+                <ScalarProperty Name="DUTY_STATE" ColumnName="DUTY_STATE" />
+                <ScalarProperty Name="DUTY_ZIP_CODE" ColumnName="DUTY_ZIP_CODE" />
+                <ScalarProperty Name="DUTY_COUNTRY" ColumnName="DUTY_COUNTRY" />
+                <ScalarProperty Name="POC_NAME" ColumnName="POC_NAME" />
+                <ScalarProperty Name="POC_PHONE" ColumnName="POC_PHONE" />
+                <ScalarProperty Name="POC_EMAIL" ColumnName="POC_EMAIL" />
+                <ScalarProperty Name="OPERATION_EXERCISE_EVENT_ID" ColumnName="OPERATION_EXERCISE_EVENT_ID" />
+                <ScalarProperty Name="ORDER_TYPE_CODE" ColumnName="ORDER_TYPE_CODE" />
+                <ScalarProperty Name="ORDER_SUBTYPE_CODE" ColumnName="ORDER_SUBTYPE_CODE" />
+                <ScalarProperty Name="DUTY_ABOARD_SHIP_IND" ColumnName="DUTY_ABOARD_SHIP_IND" />
+                <ScalarProperty Name="PCS_IND" ColumnName="PCS_IND" />
+                <ScalarProperty Name="MINIMUM_RANK" ColumnName="MINIMUM_RANK" />
+                <ScalarProperty Name="MAXIMUM_RANK" ColumnName="MAXIMUM_RANK" />
+                <ScalarProperty Name="DESIGNATOR" ColumnName="DESIGNATOR" />
+                <ScalarProperty Name="RATE_RANK" ColumnName="RATE_RANK" />
+                <ScalarProperty Name="NOBC" ColumnName="NOBC" />
+                <ScalarProperty Name="NEC" ColumnName="NEC" />
+                <ScalarProperty Name="AQD" ColumnName="AQD" />
+                <ScalarProperty Name="QUALIFICATIONS" ColumnName="QUALIFICATIONS" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="SECURITY_CLEARANCE_REQUIRED" ColumnName="SECURITY_CLEARANCE_REQUIRED" />
+                <ScalarProperty Name="SECURITY_CLEARANCE_TYPE" ColumnName="SECURITY_CLEARANCE_TYPE" />
+                <ScalarProperty Name="CONUS_OCONUS_IND" ColumnName="CONUS_OCONUS_IND" />
+                <ScalarProperty Name="SOURCE" ColumnName="SOURCE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteRequirement" FunctionName="Advertisement_PortalModel.Store.DeleteRequirement" />
+          <FunctionImportMapping FunctionImportName="GetDailyDelta" FunctionName="Advertisement_PortalModel.Store.GetDailyDelta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Advertisement_PortalModel.GetDailyDelta_Result">
+                <ScalarProperty Name="REQUIREMENT_ID" ColumnName="REQUIREMENT_ID" />
+                <ScalarProperty Name="MISSION_ID" ColumnName="MISSION_ID" />
+                <ScalarProperty Name="REQUIREMENT_NAME" ColumnName="REQUIREMENT_NAME" />
+                <ScalarProperty Name="REQUIREMENT_STATE" ColumnName="REQUIREMENT_STATE" />
+                <ScalarProperty Name="NUMBER_ENLISTED" ColumnName="NUMBER_ENLISTED" />
+                <ScalarProperty Name="FILL_MODE" ColumnName="FILL_MODE" />
+                <ScalarProperty Name="SECURITY_CLEARANCE_TYPE" ColumnName="SECURITY_CLEARANCE_TYPE" />
+                <ScalarProperty Name="SECURITY_CLEARANCE_REQUIRED" ColumnName="SECURITY_CLEARANCE_REQUIRED" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="QUALIFICATIONS" ColumnName="QUALIFICATIONS" />
+                <ScalarProperty Name="AQD" ColumnName="AQD" />
+                <ScalarProperty Name="NEC" ColumnName="NEC" />
+                <ScalarProperty Name="NOBC" ColumnName="NOBC" />
+                <ScalarProperty Name="RATE_RANK" ColumnName="RATE_RANK" />
+                <ScalarProperty Name="DESIGNATOR" ColumnName="DESIGNATOR" />
+                <ScalarProperty Name="MAXIMUM_RANK" ColumnName="MAXIMUM_RANK" />
+                <ScalarProperty Name="MINIMUM_RANK" ColumnName="MINIMUM_RANK" />
+                <ScalarProperty Name="PCS_IND" ColumnName="PCS_IND" />
+                <ScalarProperty Name="DUTY_ABOARD_SHIP_IND" ColumnName="DUTY_ABOARD_SHIP_IND" />
+                <ScalarProperty Name="ORDER_SUBTYPE_CODE" ColumnName="ORDER_SUBTYPE_CODE" />
+                <ScalarProperty Name="ORDER_TYPE_CODE" ColumnName="ORDER_TYPE_CODE" />
+                <ScalarProperty Name="OPERATION_EXERCISE_EVENT_ID" ColumnName="OPERATION_EXERCISE_EVENT_ID" />
+                <ScalarProperty Name="POC_EMAIL" ColumnName="POC_EMAIL" />
+                <ScalarProperty Name="POC_PHONE" ColumnName="POC_PHONE" />
+                <ScalarProperty Name="POC_NAME" ColumnName="POC_NAME" />
+                <ScalarProperty Name="DUTY_COUNTRY" ColumnName="DUTY_COUNTRY" />
+                <ScalarProperty Name="DUTY_ZIP_CODE" ColumnName="DUTY_ZIP_CODE" />
+                <ScalarProperty Name="DUTY_STATE" ColumnName="DUTY_STATE" />
+                <ScalarProperty Name="DUTY_CITY" ColumnName="DUTY_CITY" />
+                <ScalarProperty Name="UIC_NAME" ColumnName="UIC_NAME" />
+                <ScalarProperty Name="UIC" ColumnName="UIC" />
+                <ScalarProperty Name="TOTAL_DAYS" ColumnName="TOTAL_DAYS" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
+                <ScalarProperty Name="NUMBER_OFFICERS" ColumnName="NUMBER_OFFICERS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRequirementByID" FunctionName="Advertisement_PortalModel.Store.GetRequirementByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Advertisement_PortalModel.GetRequirementByID_Result">
+                <ScalarProperty Name="AdvertisementID" ColumnName="AdvertisementID" />
+                <ScalarProperty Name="CandidateInfoID" ColumnName="CandidateInfoID" />
+                <ScalarProperty Name="MinimumRank" ColumnName="MinimumRank" />
+                <ScalarProperty Name="MaximumRank" ColumnName="MaximumRank" />
+                <ScalarProperty Name="Designator" ColumnName="Designator" />
+                <ScalarProperty Name="AQD" ColumnName="AQD" />
+                <ScalarProperty Name="NOBC" ColumnName="NOBC" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="NEC" ColumnName="NEC" />
+                <ScalarProperty Name="Qualifications" ColumnName="Qualifications" />
+                <ScalarProperty Name="SecurityClearanceTypeID" ColumnName="SecurityClearanceTypeID" />
+                <ScalarProperty Name="SecurityClearanceRequiredID" ColumnName="SecurityClearanceRequiredID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PCS" ColumnName="PCS" />
+                <ScalarProperty Name="DutyAfloatID" ColumnName="DutyAfloatID" />
+                <ScalarProperty Name="OrderSubTypeID" ColumnName="OrderSubTypeID" />
+                <ScalarProperty Name="OrderTypeID" ColumnName="OrderTypeID" />
+                <ScalarProperty Name="DutyInfoID" ColumnName="DutyInfoID" />
+                <ScalarProperty Name="MissionID" ColumnName="MissionID" />
+                <ScalarProperty Name="MissionName" ColumnName="MissionName" />
+                <ScalarProperty Name="MissionReportDate" ColumnName="MissionReportDate" />
+                <ScalarProperty Name="MissionEndDate" ColumnName="MissionEndDate" />
+                <ScalarProperty Name="ReportingInfoID" ColumnName="ReportingInfoID" />
+                <ScalarProperty Name="UIC" ColumnName="UIC" />
+                <ScalarProperty Name="UICName" ColumnName="UICName" />
+                <ScalarProperty Name="ConusOconusID" ColumnName="ConusOconusID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RequirementName" ColumnName="RequirementName" />
+                <ScalarProperty Name="OperationExerciseEventID" ColumnName="OperationExerciseEventID" />
+                <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TotalDays" ColumnName="TotalDays" />
+                <ScalarProperty Name="RequirementStateID" ColumnName="RequirementStateID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="NumberofOfficers" ColumnName="NumberofOfficers" />
+                <ScalarProperty Name="NumberofEnlisted" ColumnName="NumberofEnlisted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PocOrganization" ColumnName="PocOrganization" />
+                <ScalarProperty Name="PocEmail" ColumnName="PocEmail" />
+                <ScalarProperty Name="PocPhone" ColumnName="PocPhone" />
+                <ScalarProperty Name="PocName" ColumnName="PocName" />
+                <ScalarProperty Name="RequirementOwnerID" ColumnName="RequirementOwnerID" />
+                <ScalarProperty Name="ConOcon" ColumnName="ConOcon" />
+                <ScalarProperty Name="ClearanceType" ColumnName="ClearanceType" />
+                <ScalarProperty Name="OpEvEx" ColumnName="OpEvEx" />
+                <ScalarProperty Name="ReqState" ColumnName="ReqState" />
+                <ScalarProperty Name="OrdType" ColumnName="OrdType" />
+                <ScalarProperty Name="OrdSubType" ColumnName="OrdSubType" />
+                <ScalarProperty Name="NROWSRequirementID" ColumnName="NROWSRequirementID" />
+                <ScalarProperty Name="NROWSIDAvailable" ColumnName="NROWSIDAvailable" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="RankSwitch" ColumnName="RankSwitch" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRequirementByRequirementID" FunctionName="Advertisement_PortalModel.Store.GetRequirementByRequirementID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Advertisement_PortalModel.GetRequirementByRequirementID_Result">
+                <ScalarProperty Name="AdvertisementID" ColumnName="AdvertisementID" />
+                <ScalarProperty Name="CandidateInfoID" ColumnName="CandidateInfoID" />
+                <ScalarProperty Name="MinimumRank" ColumnName="MinimumRank" />
+                <ScalarProperty Name="MaximumRank" ColumnName="MaximumRank" />
+                <ScalarProperty Name="Designator" ColumnName="Designator" />
+                <ScalarProperty Name="AQD" ColumnName="AQD" />
+                <ScalarProperty Name="NOBC" ColumnName="NOBC" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="NEC" ColumnName="NEC" />
+                <ScalarProperty Name="Qualifications" ColumnName="Qualifications" />
+                <ScalarProperty Name="SecurityClearanceTypeID" ColumnName="SecurityClearanceTypeID" />
+                <ScalarProperty Name="SecurityClearanceRequiredID" ColumnName="SecurityClearanceRequiredID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PCS" ColumnName="PCS" />
+                <ScalarProperty Name="DutyAfloatID" ColumnName="DutyAfloatID" />
+                <ScalarProperty Name="OrderSubTypeID" ColumnName="OrderSubTypeID" />
+                <ScalarProperty Name="OrderTypeID" ColumnName="OrderTypeID" />
+                <ScalarProperty Name="DutyInfoID" ColumnName="DutyInfoID" />
+                <ScalarProperty Name="MissionID" ColumnName="MissionID" />
+                <ScalarProperty Name="MissionName" ColumnName="MissionName" />
+                <ScalarProperty Name="MissionReportDate" ColumnName="MissionReportDate" />
+                <ScalarProperty Name="MissionEndDate" ColumnName="MissionEndDate" />
+                <ScalarProperty Name="ReportingInfoID" ColumnName="ReportingInfoID" />
+                <ScalarProperty Name="UIC" ColumnName="UIC" />
+                <ScalarProperty Name="UICName" ColumnName="UICName" />
+                <ScalarProperty Name="ConusOconusID" ColumnName="ConusOconusID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RequirementName" ColumnName="RequirementName" />
+                <ScalarProperty Name="OperationExerciseEventID" ColumnName="OperationExerciseEventID" />
+                <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TotalDays" ColumnName="TotalDays" />
+                <ScalarProperty Name="RequirementStateID" ColumnName="RequirementStateID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="NumberofOfficers" ColumnName="NumberofOfficers" />
+                <ScalarProperty Name="NumberofEnlisted" ColumnName="NumberofEnlisted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PocOrganization" ColumnName="PocOrganization" />
+                <ScalarProperty Name="PocEmail" ColumnName="PocEmail" />
+                <ScalarProperty Name="PocPhone" ColumnName="PocPhone" />
+                <ScalarProperty Name="PocName" ColumnName="PocName" />
+                <ScalarProperty Name="RequirementOwnerID" ColumnName="RequirementOwnerID" />
+                <ScalarProperty Name="ConOcon" ColumnName="ConOcon" />
+                <ScalarProperty Name="ClearanceType" ColumnName="ClearanceType" />
+                <ScalarProperty Name="OpEvEx" ColumnName="OpEvEx" />
+                <ScalarProperty Name="ReqState" ColumnName="ReqState" />
+                <ScalarProperty Name="OrdType" ColumnName="OrdType" />
+                <ScalarProperty Name="OrdSubType" ColumnName="OrdSubType" />
+                <ScalarProperty Name="NROWSRequirementID" ColumnName="NROWSRequirementID" />
+                <ScalarProperty Name="NROWSIDAvailable" ColumnName="NROWSIDAvailable" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRequirements" FunctionName="Advertisement_PortalModel.Store.GetRequirements">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Advertisement_PortalModel.GetRequirements_Result">
+                <ScalarProperty Name="AdvertisementID" ColumnName="AdvertisementID" />
+                <ScalarProperty Name="CandidateInfoID" ColumnName="CandidateInfoID" />
+                <ScalarProperty Name="MinimumRank" ColumnName="MinimumRank" />
+                <ScalarProperty Name="MaximumRank" ColumnName="MaximumRank" />
+                <ScalarProperty Name="Designator" ColumnName="Designator" />
+                <ScalarProperty Name="AQD" ColumnName="AQD" />
+                <ScalarProperty Name="NOBC" ColumnName="NOBC" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="NEC" ColumnName="NEC" />
+                <ScalarProperty Name="Qualifications" ColumnName="Qualifications" />
+                <ScalarProperty Name="SecurityClearanceTypeID" ColumnName="SecurityClearanceTypeID" />
+                <ScalarProperty Name="SecurityClearanceRequiredID" ColumnName="SecurityClearanceRequiredID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PCS" ColumnName="PCS" />
+                <ScalarProperty Name="DutyAfloatID" ColumnName="DutyAfloatID" />
+                <ScalarProperty Name="OrderSubTypeID" ColumnName="OrderSubTypeID" />
+                <ScalarProperty Name="OrderTypeID" ColumnName="OrderTypeID" />
+                <ScalarProperty Name="DutyInfoID" ColumnName="DutyInfoID" />
+                <ScalarProperty Name="MissionID" ColumnName="MissionID" />
+                <ScalarProperty Name="MissionName" ColumnName="MissionName" />
+                <ScalarProperty Name="MissionReportDate" ColumnName="MissionReportDate" />
+                <ScalarProperty Name="MissionEndDate" ColumnName="MissionEndDate" />
+                <ScalarProperty Name="ReportingInfoID" ColumnName="ReportingInfoID" />
+                <ScalarProperty Name="UIC" ColumnName="UIC" />
+                <ScalarProperty Name="UICName" ColumnName="UICName" />
+                <ScalarProperty Name="ConusOconusID" ColumnName="ConusOconusID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RequirementName" ColumnName="RequirementName" />
+                <ScalarProperty Name="OperationExerciseEventID" ColumnName="OperationExerciseEventID" />
+                <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TotalDays" ColumnName="TotalDays" />
+                <ScalarProperty Name="RequirementStateID" ColumnName="RequirementStateID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="NumberofOfficers" ColumnName="NumberofOfficers" />
+                <ScalarProperty Name="NumberofEnlisted" ColumnName="NumberofEnlisted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PocOrganization" ColumnName="PocOrganization" />
+                <ScalarProperty Name="PocEmail" ColumnName="PocEmail" />
+                <ScalarProperty Name="PocPhone" ColumnName="PocPhone" />
+                <ScalarProperty Name="PocName" ColumnName="PocName" />
+                <ScalarProperty Name="RequirementOwnerID" ColumnName="RequirementOwnerID" />
+                <ScalarProperty Name="ConOcon" ColumnName="ConOcon" />
+                <ScalarProperty Name="ClearanceType" ColumnName="ClearanceType" />
+                <ScalarProperty Name="OpEvEx" ColumnName="OpEvEx" />
+                <ScalarProperty Name="ReqState" ColumnName="ReqState" />
+                <ScalarProperty Name="OrdType" ColumnName="OrdType" />
+                <ScalarProperty Name="OrdSubType" ColumnName="OrdSubType" />
+                <ScalarProperty Name="NROWSRequirementID" ColumnName="NROWSRequirementID" />
+                <ScalarProperty Name="NROWSIDAvailable" ColumnName="NROWSIDAvailable" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="RankSwitch" ColumnName="RankSwitch" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertRequirement" FunctionName="Advertisement_PortalModel.Store.InsertRequirement" />
+          <FunctionImportMapping FunctionImportName="RHS_Merge_Data" FunctionName="Advertisement_PortalModel.Store.RHS_Merge_Data" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Advertisement_PortalModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Advertisement_PortalModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_Daily_Delta" FunctionName="Advertisement_PortalModel.Store.sp_Daily_Delta" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Advertisement_PortalModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Advertisement_PortalModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Advertisement_PortalModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Advertisement_PortalModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Advertisement_PortalModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Import_From_RHS_Global" FunctionName="Advertisement_PortalModel.Store.sp_Import_From_RHS_Global" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Advertisement_PortalModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Advertisement_PortalModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="UpdateRequirement" FunctionName="Advertisement_PortalModel.Store.UpdateRequirement" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
