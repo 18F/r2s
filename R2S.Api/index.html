@@ -81,9 +81,9 @@
       <img src="Content/img/icons/messaging.png" alt="messaging"><h1>Messaging</h1>
       <p><a href="https://webmail.east.nmci.navy.mil">E-Mail</a></p>
       <p><a href="https://conference.apps.mil">DCS</a></p>
+      <p>Texting</p>
       
       <img src="Content/img/icons/locator.png" alt="locator"><h1>Locator</h1>
-      <p><a href="">Texting</a></p>
       <p><a href="https://pki.navyfamily.navy.mil">NFAAS</a></p>
       <p>NOSC Locator</p>
       
@@ -101,17 +101,17 @@
           <img  src="Content/img/meter.svg" alt="readiness meter">
         </div>
         
-        <img class="profile" src="Content/user/sailor.png" alt="profile picture">
-        <h1>Carina Stone</h1>
-        <p>Rate/Rank: IS2</p>
+        <img id="profile-img" class="profile" src="Content/img/cnrf.png" alt="profile picture">
+        <h1 id="name"></h1>
+        <p>Rate/Rank: <span id="rate-rank"></span></p>
         <h1>Clearance Date:</h1>
-        <p>27 May 15</p>
+        <p id="clearance-date"></p>
         <h1>Last PHA:</h1>
-        <p>10 Jun 15</p>
+        <p id="last-pha"></p>
         <h1>Medical Status:</h1>
-        <p>Ready</p>
+        <p id="medical-status"></p>
         <h1>Dental Status:</h1>
-        <p>Ready</p>
+        <p id="dental-status"></p>
       </div>
       
       <!-- Old home view -->
@@ -335,6 +335,7 @@
     
   </script>
   
+  <script src="Content/js/api.js"></script>
   <script src="Content/js/app.js"></script>
 </body>
 

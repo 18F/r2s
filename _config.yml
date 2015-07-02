@@ -1,0 +1,10 @@
+# Site settings
+title: Navy Reserve Ready to Serve
+description: > # this means to ignore newlines until "baseurl:"
+  Welcome to Navy Reserve Ready to Serve!
+baseurl: "/r2s"
+url: "https://pages.18f.gov"
+
+source: R2S.Api
+
+exclude: [App_Start, Controllers, Models, Properties, Scripts, Utilities, Views, Global.asax, Global.asax.cs, packages.config, R2S.Api.csproj, Web.config, Web.Debug.config, Web.Release.config]
