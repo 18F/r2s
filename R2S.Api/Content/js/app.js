@@ -12,11 +12,6 @@ var App = (function () {
   ///////////////////////////
   
   /*
-   * An example private method.
-   */
-  var privateMethod = function () {};
-  
-  /*
    * Hides all views.
    */
   var hideViews = function () {
