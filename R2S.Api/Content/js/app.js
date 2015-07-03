@@ -12,11 +12,6 @@ var App = (function () {
   ///////////////////////////
   
   /*
-   * An example private method.
-   */
-  var privateMethod = function () {};
-  
-  /*
    * Hides all views.
    */
   var hideViews = function () {
@@ -227,6 +222,32 @@ var App = (function () {
     }, function () {
       showView('view-orders');
     });
+  });
+  
+  // Set API to use remote or local data
+  // Also could check `window.location.host == "pages.18f.gov"`
+  if (getUrlParamValue('mock') == 'true') {
+    API.useMockData(true);
+  }
+  
+  // Load data from API on load
+  API.getPersonnelData(function (data) {
+    $('#name').html(data.name);
+    $('#rate-rank').html(data.rate_rank);
+    $('#profile-img').attr('src', data.profile_img);
+  });
+  
+  API.getClearanceData(function (data) {
+    $('#clearance-date').html(data);
+  });
+  API.getPHAData(function (data) {
+    $('#last-pha').html(data);
+  });
+  API.getMedicalData(function (data) {
+    $('#medical-status').html(data);
+  });
+  API.getDentalData(function (data) {
+    $('#dental-status').html(data);
   });
   
   // Read hash from URL, show current view

@@ -8,3 +8,5 @@ packages/
 R2S.Api/bin/
 R2S.Api/obj/
 R2S.Api/deploy/
+
+_site/
