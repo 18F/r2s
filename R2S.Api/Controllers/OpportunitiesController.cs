@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using System.Data;
 using System.Data.SqlClient;
 using R2S.Api.Models;
+using System.Diagnostics;
+
+
 //using System.Boolean;
 
 
@@ -41,6 +44,8 @@ namespace R2S.Api.Controllers
 
         private List<string> DatabaseColumnsToQuery;
 
+        List<string> debugMessages = new List<String>();
+
         public OpportunitiesController()
         {
             DatabaseColumnsToQuery = new List<string>();
@@ -66,6 +71,14 @@ namespace R2S.Api.Controllers
         // GET: Opportunties
         public ActionResult Index()
         {
+
+            System.Diagnostics.Debug.WriteLine("DEBUG: OpportunitesController.Index() Called");
+            System.Diagnostics.Trace.WriteLine("DEBUG: OpportunitesController.Index() Called");
+            Trace.TraceWarning("XXX");
+            Trace.WriteLine("DEBUG: OpportunitesController.Index() Called");
+
+            debugMessages.Add(" OpportunitesController.Index() Called");
+            //Response.Write("DEBUG: OpportunitesController.Index() Called");
 
             // Initialize list to hold all opportunities that match from database
             var opportunities = new List<OpportunityModel>();
@@ -209,6 +222,7 @@ namespace R2S.Api.Controllers
                 }
             }
 
+            ViewData["DebugMessages"] = debugMessages;
 
             return this.Json(opportunities, JsonRequestBehavior.AllowGet);
 
