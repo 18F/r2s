@@ -9,7 +9,7 @@ var API = (function () {
   
   var url = "",
       API_URL = "",
-      API_URL_MOCK = "/Content/API";
+      API_URL_MOCK = "Content/API";
   
   var usingMock = false;
   
