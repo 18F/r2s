@@ -1,5 +1,5 @@
 {
-  name: "Carina Stone",
-  rate_rank: "IS2",
-  profile_img: "Content/img/cnrf.png"
+  "name": "Carina Stone",
+  "rate_rank": "IS2",
+  "profile_img": "Content/img/sailor.png"
 }

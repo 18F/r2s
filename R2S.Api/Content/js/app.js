@@ -39,6 +39,9 @@ var App = (function () {
     case 'advertisements':
       advertisementsController();
       break;
+    case 'api':
+      apiController();
+      break;
     default:
       // Set a default case
     }
@@ -114,6 +117,30 @@ var App = (function () {
         html += "<h2>" + val.Title + "</h2>" + "<p>" + val.Description + "</p>";
       });
       $('#advertisement-list').html("<pre><code>" + JSON.stringify(data) + "</code></pre>" + html);
+    });
+  };
+  
+  var apiController = function () {
+    if (API.isUsingMock()) {
+      $('#api-using-mock-data').html("Yes");
+    } else {
+      $('#api-using-mock-data').html("No");
+    }
+    
+    API.getPersonnelData(function (data) {
+      $('#api-personnel').html(JSON.stringify(data, null, 2));
+    });
+    API.getClearanceData(function (data) {
+      $('#api-clearance').html(JSON.stringify(data, null, 2));
+    });
+    API.getPHAData(function (data) {
+      $('#api-pha').html(JSON.stringify(data, null, 2));
+    });
+    API.getMedicalData(function (data) {
+      $('#api-medical').html(JSON.stringify(data, null, 2));
+    });
+    API.getDentalData(function (data) {
+      $('#api-dental').html(JSON.stringify(data, null, 2));
     });
   };
   
@@ -199,16 +226,16 @@ var App = (function () {
   });
   
   API.getClearanceData(function (data) {
-    $('#clearance-date').html(data);
+    $('#clearance-date').html(data.date);
   });
   API.getPHAData(function (data) {
-    $('#last-pha').html(data);
+    $('#last-pha').html(data.last_pha);
   });
   API.getMedicalData(function (data) {
-    $('#medical-status').html(data);
+    $('#medical-status').html(data.status);
   });
   API.getDentalData(function (data) {
-    $('#dental-status').html(data);
+    $('#dental-status').html(data.status);
   });
   
   // Read hash from URL, show current view
