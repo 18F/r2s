@@ -36,8 +36,8 @@ var App = (function () {
     case 'view-orders':
       viewOrdersController();
       break;
-    case 'advertisements':
-      advertisementsController();
+    case 'api':
+      apiController();
       break;
     default:
       // Set a default case
@@ -106,53 +106,28 @@ var App = (function () {
       $('#orders-list').html("<pre><code>" + JSON.stringify(data) + "</code></pre>" + html);
     });
   };
-
-  var advertisementsController = function () {
-    $.getJSON("/Opportunities", function (data) {
-        var html = "<table>";
-
-        // Format header row
-        // TODO: This should use common css style to applied across entire interface
-        // TODO: Not sure why background color is not working
-        html += "<tbody align=\"center\" style=\"font-weight:bold; background-color:#9D9696 bgcolor:#9D9696\">";
-
-        // Table titles must match order of cells below in for loop
-        html += "<td>ID</td>";
-        html += "<td>Ranks</td>";
-        html += "<td>Qualifications</td>";
-        html += "<td>Mission Name</td>";
-        html += "<td>Report Date</td>";
-        html += "<td>End Data</td>";
-        html += "<td>Location</td>";
-
-        // Close out format for header row
-        html += "</tbody>"
-
-      $.each(data, function (i, val) {
-        // var opportunity = new OpportunityModel() { AdvertisementID = advertisementID, RankRange = rankRange, QualificationSummary = qualificationSummary, MissionName = missionName, ReportDate = startDate, EndDate = endDate, Location = location };
-
-          html += "<tr>";
-          html += "<td>" + val.AdvertisementID + "</td>";
-          html += "<td>" + val.RankRange + "</td>";
-          html += "<td>" + val.QualificationSummary + "</td>";
-          html += "<td>" + val.MissionName + "</td>";
-
-          // TODO: Should make this a function
-          var dateObject = new Date(parseInt(val.ReportDate.substring(6)));
-          var dateString = dateObject.toLocaleDateString();
-          html += "<td>" + dateString + "</td>";
-
-          // TODO: Should make this a function
-          dateObject = new Date(parseInt(val.EndDate.substring(6)));
-          dateString = dateObject.toLocaleDateString();
-          html += "<td>" + dateString + "</td>";
-
-          html += "<td>" + val.Location + "</td>";
-          html += "</tr>";
-      });
-      html += "</table>";
-//      $('#advertisement-list').html("<pre><code>" + JSON.stringify(data) + "</code></pre>" + html);
-      $('#advertisement-list').html(html);
+  
+  var apiController = function () {
+    if (API.isUsingMock()) {
+      $('#api-using-mock-data').html("Yes");
+    } else {
+      $('#api-using-mock-data').html("No");
+    }
+    
+    API.getPersonnelData(function (data) {
+      $('#api-personnel').html(JSON.stringify(data, null, 2));
+    });
+    API.getClearanceData(function (data) {
+      $('#api-clearance').html(JSON.stringify(data, null, 2));
+    });
+    API.getPHAData(function (data) {
+      $('#api-pha').html(JSON.stringify(data, null, 2));
+    });
+    API.getMedicalData(function (data) {
+      $('#api-medical').html(JSON.stringify(data, null, 2));
+    });
+    API.getDentalData(function (data) {
+      $('#api-dental').html(JSON.stringify(data, null, 2));
     });
   };
   
@@ -238,16 +213,16 @@ var App = (function () {
   });
   
   API.getClearanceData(function (data) {
-    $('#clearance-date').html(data);
+    $('#clearance-date').html(data.date);
   });
   API.getPHAData(function (data) {
-    $('#last-pha').html(data);
+    $('#last-pha').html(data.last_pha);
   });
   API.getMedicalData(function (data) {
-    $('#medical-status').html(data);
+    $('#medical-status').html(data.status);
   });
   API.getDentalData(function (data) {
-    $('#dental-status').html(data);
+    $('#dental-status').html(data.status);
   });
   
   // Read hash from URL, show current view

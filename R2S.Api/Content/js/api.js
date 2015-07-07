@@ -7,6 +7,10 @@ var API = (function () {
   // Properties
   ///////////////////////////
   
+  var baseURL = "",
+      API_URL = "/apps/r2s",
+      API_URL_MOCK = "Content/API";
+  
   var usingMock = false;
   
   var personnel = {
@@ -14,20 +18,18 @@ var API = (function () {
         rate_rank:   "(no data)",
         profile_img: "Content/img/cnrf.png"
       },
-      clearance_date = "(no data)",
-      last_pha       = "(no data)",
-      medical_status = "(no data)",
-      dental_status  = "(no data)";
-  
-  var personnel_mock = {
-        name:        "Carina Stone",
-        rate_rank:   "IS2",
-        profile_img: "Content/img/sailor.png"
+      clearance = {
+        date: "(no data)"
       },
-      clearance_date_mock = "27 May 15",
-      last_pha_mock       = "10 Jun 15",
-      medical_status_mock = "Ready",
-      dental_status_mock  = "Ready";
+      pha = {
+        last_pha: "(no data)"
+      },
+      medical = {
+        status: "(no data)"
+      },
+      dental = {
+        status: "(no data)"
+      };
   
   // Public Methods
   ///////////////////////////
@@ -38,7 +40,12 @@ var API = (function () {
   var useMockData = function (useMock) {
     if (useMock) {
       usingMock = true;
+      baseURL = API_URL_MOCK;
     }
+  };
+  
+  var isUsingMock = function () {
+    return usingMock;
   };
   
   // API calls
@@ -47,88 +54,67 @@ var API = (function () {
    * Get the sailor's personnel data
    */
   var getPersonnelData = function (callback) {
-    if (usingMock) {
-      callback(personnel_mock);
-    } else {
-      $.getJSON("/Personnel", function (data) {
-        personnel.name = data.name;
-        personnel.rate_rank = data.rate_rank;
-        personnel.profile_img = data.profile_img;
-        callback(personnel);
-      })
-      .fail(function() {
-        callback(personnel);
-      });
-    }
+    $.getJSON(baseURL + "/Personnel", function (data) {
+      personnel.name = data.name;
+      personnel.rate_rank = data.rate_rank;
+      personnel.profile_img = data.profile_img;
+      callback(personnel);
+    })
+    .fail(function() {
+      callback(personnel);
+    });
   };
-  
   
   /*
    * Get the sailor's clearance data
    */
   var getClearanceData = function (callback) {
-    if (usingMock) {
-      callback(clearance_date_mock);
-    } else {
-      $.getJSON("/Clearance", function (data) {
-        clearance_date = data.clearance_date;
-        callback(clearance_date);
-      })
-      .fail(function() {
-        callback(clearance_date);
-      });
-    }
+    $.getJSON(baseURL + "/Clearance", function (data) {
+      clearance.date = data.date;
+      callback(clearance);
+    })
+    .fail(function() {
+      callback(clearance);
+    });
   };
   
   /*
    * Get the sailor's PHA data
    */
   var getPHAData = function (callback) {
-    if (usingMock) {
-      callback(last_pha_mock);
-    } else {
-      $.getJSON("/PHA", function (data) {
-        last_pha = data.last_pha;
-        callback(last_pha);
-      })
-      .fail(function() {
-        callback(last_pha);
-      });
-    }
+    $.getJSON(baseURL + "/PHA", function (data) {
+      pha.last_pha = data.last_pha;
+      callback(pha);
+    })
+    .fail(function() {
+      callback(pha);
+    });
   };
   
   /*
    * Get the sailor's medical data
    */
   var getMedicalData = function (callback) {
-    if (usingMock) {
-      callback(medical_status_mock);
-    } else {
-      $.getJSON("/Medical", function (data) {
-        medical_status = data.medical_status;
-        callback(medical_status);
-      })
-      .fail(function() {
-        callback(medical_status);
-      });
-    }
+    $.getJSON(baseURL + "/Medical", function (data) {
+      medical.status = data.status;
+      callback(medical);
+    })
+    .fail(function() {
+      callback(medical);
+    });
   };
   
   /*
    * Get the sailor's dental data
    */
   var getDentalData = function (callback) {
-    if (usingMock) {
-      callback(dental_status_mock);
-    } else {
-      $.getJSON("/Dental", function (data) {
-        dental_status = data.dental_status;
-        callback(dental_status);
-      })
-      .fail(function() {
-        callback(dental_status);
-      });
-    }
+    $.getJSON(baseURL + "/Dental", function (data) {
+      dental.status = data.status;
+      callback(dental);
+    })
+    .fail(function() {
+      callback(dental);
+    });
   };
   
   
@@ -138,6 +124,7 @@ var API = (function () {
   // Reveal public methods
   return {
     useMockData:      useMockData,
+    isUsingMock:      isUsingMock,
     getPersonnelData: getPersonnelData,
     getClearanceData: getClearanceData,
     getPHAData:       getPHAData,

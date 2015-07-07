@@ -63,10 +63,14 @@
   <div id="site-mobile-menu" style="display:none">
     <div class="content">
       
+      <!--
+        Show a view using: <a href="javascript:App.showView('home')"></a>
+      -->
+      
       <img src="Content/img/icons/orders.png" alt="orders"><h1>Orders</h1>
-      <p><a href="javascript:App.showView('view-orders')">Current Orders</a></p>
-      <p><a href="javascript:App.showView('advertisements')">Orders Advertisements</a></p>
-      <p><a href="javascript:App.showView('request-orders')">Submit Orders</a></p>
+      <p>Current Orders</p>
+      <p>Current Orders</p>
+      <p>Submit Orders</p>
       <p>Orders Summary</p>
       <p>Orders Modification</p>
       <p>Hard Holds</p>
@@ -86,6 +90,9 @@
       <img src="Content/img/icons/locator.png" alt="locator"><h1>Locator</h1>
       <p><a href="https://pki.navyfamily.navy.mil">NFAAS</a></p>
       <p>NOSC Locator</p>
+      
+      <img src="Content/img/icons/settings.png" alt="diagnostics"><h1>Diagnostics</h1>
+      <p><a href="javascript:App.showView('api')">API Responses</a></p>
       
     </div>
   </div>
@@ -116,7 +123,7 @@
       
       <!-- Old home view -->
       <div id="old-home" class="view">
-
+        
         <div id="home-hard-hold" class="partial">
           <div class="warning">
             <p class="title">Orders Hard Hold</p>
@@ -124,7 +131,7 @@
             <p>After hours contact CDO at <a href="tel:+18001234567">1-800-123-4567</a>.</p>
           </div>
         </div>
-
+        
         <div class="home-button-list">
           <div class="home-button" onclick="javascript:App.showView('orders');">
             <div class="icon orders"></div>
@@ -155,17 +162,13 @@
             <span>Update
               <br>NFAAS</span>
           </div>
-          <div class="home-button" onclick="javascript:App.showView('advertisements');">
-            <div class="icon advertisements"></div>
-            <span>Adverts</span>
-          </div>
         </div>
       </div>
-
+      
       <!-- Orders view -->
       <div id="orders" class="view">
         <a href="javascript:App.showView('home')">« Back</a>
-
+        
         <div id="orders-hard-hold" class="partial">
           <div class="warning">
             <p class="title">Orders Hard Hold</p>
@@ -173,14 +176,14 @@
             <p>After hours contact CDO at <a href="tel:+18001234567">1-800-123-4567</a>.</p>
           </div>
         </div>
-
+        
         <h1>My Orders</h1>
         <ul>
           <li id="request-orders-link"><a href="javascript:App.showView('request-orders')">Request new orders »</a></li>
           <li><a href="javascript:App.showView('view-orders')">View existing orders »</a></li>
         </ul>
       </div>
-
+      
       <!-- Request orders view -->
       <div id="request-orders" class="view">
         <a id="request-orders-back" href="javascript:;">« Back</a>
@@ -206,7 +209,7 @@
           <div id="btn-request-orders-submit" class="button">Submit »</div>
         </div>
       </div>
-
+      
       <!-- View orders view -->
       <div id="view-orders" class="view">
         <a href="javascript:App.showView('home')">« Back</a>
@@ -229,11 +232,11 @@
             <a href="javascript:prompt('Provide a brief description of the issue(s) with these orders. Your action officer will be notified.');">Report an issue »</a>
           </p>
         </div>
-
+        
         <h1>Orders API Response</h1>
         <div id="orders-list"></div>
       </div>
-
+      
       <!-- Modify orders view -->
       <div id="modify-orders" class="view">
         <a id="modify-orders-back" href="javascript:;">« Back</a>
@@ -259,16 +262,26 @@
           <div id="btn-modify-orders-cancel" class="button cancel">Cancel</div>
           <div id="btn-modify-orders-submit" class="button">Submit »</div>
         </div>
-
+        
       </div>
-
-      <!-- Advertisements view -->
-      <div id="advertisements" class="view">
+      
+      <!-- API view -->
+      <div id="api" class="view">
         <a href="javascript:App.showView('home')">« Back</a>
-        <h1>Orders Advertisements</h1>
-        <div id="advertisement-list"></div>
+        <h1>API Responses</h1>
+        <p>Using mock data: <b id="api-using-mock-data"></b></p>
+        <h2>Personnel</h2>
+        <pre><code id="api-personnel"></code></pre>
+        <h2>Clearance</h2>
+        <pre><code id="api-clearance"></code></pre>
+        <h2>PHA</h2>
+        <pre><code id="api-pha"></code></pre>
+        <h2>Medical</h2>
+        <pre><code id="api-medical"></code></pre>
+        <h2>Dental</h2>
+        <pre><code id="api-dental"></code></pre>
       </div>
-
+      
       <!-- Under construction view -->
       <div id="under-construction" class="view">
         <a href="javascript:App.showView('home')">« Back</a>
@@ -277,10 +290,10 @@
           <img src="https://camo.githubusercontent.com/4a7cf94aedbd23c13cc2d75fdc3b2af5c816c208/687474703a2f2f7374617469632e646967672e636f6d2f7374617469632f696d616765732f6469676765722e676966" alt="under construction">
         </div>
       </div>
-
+      
     </div>
   </div>
-
+  
   <script src="Content/js/jquery-2.1.4.min.js"></script>
   <script src="Content/js/fastclick.js"></script>
   <script src="Content/js/sweetalert.min.js"></script>
