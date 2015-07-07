@@ -101,7 +101,7 @@ var App = (function () {
     $.getJSON("/Orders", function (data) {
       var html = "";
       $.each(data, function (i, val) {
-        html += "<h2>" + val.Title + "</h2>" + "<p>" + val.Description + "</p>";
+         html += "<h2>" + val.Title + "</h2>" + "<p>" + val.Description + "</p>";
       });
       $('#orders-list').html("<pre><code>" + JSON.stringify(data) + "</code></pre>" + html);
     });

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8c5aa4a203c444d7a0242f0f2b83dc71" Name="Diagram1">
+        <EntityTypeShape EntityType="Advertisement_PortalModel.AuditGetRequirement" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.CandidateInfo" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.ConusOconu" Width="1.5" PointX="3.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.DutyInfo" Width="1.5" PointX="6" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.MissionInfo" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.NROWS_AD_FLEET_EXERCISE" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.NROWS_AD_LK_ADSW_AT_TYPES" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.NROWS_AD_LK_ORDER_TYPE" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.NROWS_AD_LK_TYPE_SECURITY" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.NROWS_AD_MISSION" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.NROWS_AD_REQUIREMENT_OWNER" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.OperationEventExercise" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.OrderSubType" Width="1.5" PointX="3.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.OrderType" Width="1.5" PointX="1.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.ReportingInfo" Width="1.5" PointX="6" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.RequirementInfo" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.RequirementOwner" Width="1.5" PointX="3" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.RequirementState" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.SecurityClearanceType" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.sysdiagram" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.YesNo" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.DAILY_DELTA" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.All_View" Width="1.5" PointX="5.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Advertisement_PortalModel.DD_View" Width="1.5" PointX="7.75" PointY="13.75" IsExpanded="true" />
+        <AssociationConnector Association="Advertisement_PortalModel.FK__Candidate__Requi__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="Advertisement_PortalModel.FK__Candidate__Secur__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="Advertisement_PortalModel.FK__Candidate__Secur__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="Advertisement_PortalModel.FK__Reporting__Conus__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="Advertisement_PortalModel.FK__DutyInfo__DutyAf__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="Advertisement_PortalModel.FK__DutyInfo__OrderS__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="Advertisement_PortalModel.FK__DutyInfo__OrderT__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="Advertisement_PortalModel.FK__DutyInfo__PCS__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="Advertisement_PortalModel.FK__DutyInfo__Requir__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="Advertisement_PortalModel.FK__MissionIn__Requi__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="Advertisement_PortalModel.FK__OrderSubT__Order__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="Advertisement_PortalModel.FK__Reporting__Requi__02084FDA" ManuallyRouted="false" />
+        <AssociationConnector Association="Advertisement_PortalModel.FK__Requireme__Requi__3C69FB99" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -47,6 +47,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -55,6 +61,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -115,16 +123,126 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdvertisementsController.cs" />
+    <Compile Include="Controllers\ApplyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IdentityController.cs" />
+    <Compile Include="Controllers\OpportunitiesController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdvertisementViewModel.cs" />
+    <Compile Include="Models\All_View.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApplyBillet.cs" />
+    <Compile Include="Models\ApplyBilletsDummyData.cs" />
+    <Compile Include="Models\AuditGetRequirement.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CandidateInfo.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CertificateModel.cs" />
+    <Compile Include="Models\ConusOconu.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAILY_DELTA.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DD_View.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DutyInfo.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetDailyDelta_Result.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetRequirementByID_Result.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetRequirementByRequirementID_Result.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetRequirements_Result.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModel.cs" />
+    <Compile Include="Models\MissionInfo.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NROWS_AD_FLEET_EXERCISE.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NROWS_AD_LK_ADSW_AT_TYPES.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NROWS_AD_LK_ORDER_TYPE.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NROWS_AD_LK_TYPE_SECURITY.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NROWS_AD_MISSION.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NROWS_AD_REQUIREMENT_OWNER.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OperationEventExercise.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OpportunitiesDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpportunitiesDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OpportunitiesDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OpportunitiesDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpportunitiesDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OpportunityModel.cs" />
+    <Compile Include="Models\OrderSubType.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderType.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="Models\ReportingInfo.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequirementInfo.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequirementOwner.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequirementState.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SecurityClearanceType.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\YesNo.cs">
+      <DependentUpon>OpportunitiesDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\DodPkiCertificateParser.cs" />
   </ItemGroup>
@@ -144,12 +262,34 @@
     <Content Include="Content\css\sweet-alert.css" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <EntityDeploy Include="Models\OpportunitiesDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OpportunitiesDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\OpportunitiesDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OpportunitiesDB.edmx</DependentUpon>
+      <LastGenOutput>OpportunitiesDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\OpportunitiesDB.edmx.diagram">
+      <DependentUpon>OpportunitiesDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\OpportunitiesDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OpportunitiesDB.edmx</DependentUpon>
+      <LastGenOutput>OpportunitiesDB.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\NRH.pubxml" />
     <Content Include="Content\js\app.js" />
     <Content Include="Content\js\fastclick.js" />
     <Content Include="Content\js\sweet-alert.min.js" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -160,14 +300,27 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Advertisements\Index.cshtml" />
+    <Content Include="Views\Apply\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Apply\NotFound.cshtml" />
+    <Content Include="Views\Apply\ShowDummyBillets.cshtml" />
+    <Content Include="Views\Apply\GetMatchingApplyBillets.cshtml" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Identity\" />
+    <Folder Include="Views\Opportunities\" />
+    <Folder Include="Views\Opportunties\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

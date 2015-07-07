@@ -1,0 +1,16 @@
+﻿@using R2S.Api.Models
+@model IEnumerable<ApplyBillet>
+
+<table>
+    <tr>
+        <th>Unit</th>
+        <th>Billet Title</th>
+    </tr>
+    @foreach (ApplyBillet billet in Model)
+    {
+        <tr>
+            <td>@billet.ReserveMobilizationUnitNavyUnitTitle</td>
+            <td>@billet.BilletTitle</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,22 @@
+﻿@using R2S.Api.Models
+@model IEnumerable<ApplyBillet>
+
+@{
+    ViewBag.Title = "ShowApplyBillet";
+}
+
+<h2>Dummy Apply Billet</h2>
+
+<table>
+    <tr>
+        <th>Unit</th>
+        <th>Billet Title</th>
+    </tr>
+    @foreach (ApplyBillet billet in Model)
+    {
+        <tr>
+            <td>@billet.ReserveMobilizationUnitNavyUnitTitle</td>
+            <td>@billet.BilletTitle</td>
+        </tr>
+    }
+</table>
