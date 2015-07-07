@@ -36,9 +36,6 @@ var App = (function () {
     case 'view-orders':
       viewOrdersController();
       break;
-    case 'advertisements':
-      advertisementsController();
-      break;
     case 'api':
       apiController();
       break;
@@ -107,16 +104,6 @@ var App = (function () {
         html += "<h2>" + val.Title + "</h2>" + "<p>" + val.Description + "</p>";
       });
       $('#orders-list').html("<pre><code>" + JSON.stringify(data) + "</code></pre>" + html);
-    });
-  };
-
-  var advertisementsController = function () {
-    $.getJSON("/Advertisements", function (data) {
-      var html = "";
-      $.each(data, function (i, val) {
-        html += "<h2>" + val.Title + "</h2>" + "<p>" + val.Description + "</p>";
-      });
-      $('#advertisement-list').html("<pre><code>" + JSON.stringify(data) + "</code></pre>" + html);
     });
   };
   
