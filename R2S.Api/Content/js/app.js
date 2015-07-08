@@ -30,22 +30,22 @@ var App = (function () {
     case 'home':
       homeController();
       break;
-    case 'orders':
-      ordersController();
-      break;
-    case 'view-orders':
-      viewOrdersController();
       break;
     case 'api':
       apiController();
       break;
-    default:
-      // Set a default case
     }
     
+    // Show the view
     $('#' + view).show();
-    window.scrollTo(0, 0);
+    
+    // Add the view to the browser history
     history.pushState({}, "", "#" + view);
+    
+    // Scroll to top after view change
+    setTimeout(function() {
+      $(document.body).scrollTop(0);
+    }, 10);
   };
   
   /*
@@ -87,23 +87,8 @@ var App = (function () {
     }
   };
   
-  var ordersController = function () {
-    if (getUrlParamValue('hardhold') == 'true') {
-      showPartial('orders-hard-hold');
-      $('#request-orders-link').hide();
-    } else {
-      hidePartial('orders-hard-hold');
-      $('#request-orders-link').show();
-    }
-  };
-
-  var viewOrdersController = function () {
-    $.getJSON("/Orders", function (data) {
       var html = "";
-      $.each(data, function (i, val) {
-         html += "<h2>" + val.Title + "</h2>" + "<p>" + val.Description + "</p>";
       });
-      $('#orders-list').html("<pre><code>" + JSON.stringify(data) + "</code></pre>" + html);
     });
   };
   
@@ -145,58 +130,6 @@ var App = (function () {
   // When the hash fragment changes
   $(window).on('hashchange', function(e) {
     showView(window.location.hash.slice(1));
-  });
-  
-  // Set button bindings
-  
-  $('#btn-login').on('click', function () {
-    showView('home');
-  });
-  
-  $('#btn-request-orders-submit').on('click', function () {
-    swal({
-      title: "Orders submitted!",
-      type: 'success',
-      confirmButtonColor: '#084D8A'
-    }, function () {
-      showView('home');
-    });
-  });
-  
-  $('#btn-request-orders-cancel, #request-orders-back').on('click', function () {
-    swal({
-      title: "Cancel new orders request?",
-      type: 'warning',
-      showCancelButton: true,
-      cancelButtonText: 'No',
-      confirmButtonColor: '#DD6B55',
-      confirmButtonText: 'Yes'
-    }, function () {
-      showView('home');
-    });
-  });
-  
-  $('#btn-modify-orders-submit').on('click', function () {
-    swal({
-      title: "Orders modified!",
-      type: 'success',
-      confirmButtonColor: '#084D8A'
-    }, function () {
-      showView('view-orders');
-    });
-  });
-  
-  $('#btn-modify-orders-cancel, #modify-orders-back').on('click', function () {
-    swal({
-      title: "Cancel modifying these orders?",
-      type: 'warning',
-      showCancelButton: true,
-      cancelButtonText: 'No',
-      confirmButtonColor: '#DD6B55',
-      confirmButtonText: 'Yes'
-    }, function () {
-      showView('view-orders');
-    });
   });
   
   // Set API to use remote or local data
