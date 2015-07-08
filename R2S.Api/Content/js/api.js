@@ -18,6 +18,7 @@ var API = (function () {
         rate_rank:   "(no data)",
         profile_img: "Content/img/cnrf.png"
       },
+      opportunities = [],
       clearance = {
         date: "(no data)"
       },
@@ -62,6 +63,19 @@ var API = (function () {
     })
     .fail(function() {
       callback(personnel);
+    });
+  };
+  
+  /*
+   * Get opportunities data
+   */
+  var getOpportunitiesData = function (callback) {
+    $.getJSON(baseURL + "/Opportunities", function (data) {
+      opportunities = data;
+      callback(opportunities);
+    })
+    .fail(function() {
+      callback(opportunities);
     });
   };
   
@@ -121,15 +135,18 @@ var API = (function () {
   // Init
   ///////////////////////////
   
+  baseURL = API_URL;
+  
   // Reveal public methods
   return {
-    useMockData:      useMockData,
-    isUsingMock:      isUsingMock,
-    getPersonnelData: getPersonnelData,
-    getClearanceData: getClearanceData,
-    getPHAData:       getPHAData,
-    getMedicalData:   getMedicalData,
-    getDentalData:    getDentalData
+    useMockData:          useMockData,
+    isUsingMock:          isUsingMock,
+    getPersonnelData:     getPersonnelData,
+    getOpportunitiesData: getOpportunitiesData,
+    getClearanceData:     getClearanceData,
+    getPHAData:           getPHAData,
+    getMedicalData:       getMedicalData,
+    getDentalData:        getDentalData
   };
   
 })();

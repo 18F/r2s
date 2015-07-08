@@ -1,0 +1,29 @@
+[
+  {
+    "AdvertisementID": "...",
+    "RankRange": "...",
+    "QualificationSummary": "...",
+    "MissionName": "...",
+    "ReportDate": "...",
+    "EndDate": "...",
+    "Location": "..."
+  },
+  {
+    "AdvertisementID": "...",
+    "RankRange": "...",
+    "QualificationSummary": "...",
+    "MissionName": "...",
+    "ReportDate": "...",
+    "EndDate": "...",
+    "Location": "..."
+  },
+  {
+    "AdvertisementID": "...",
+    "RankRange": "...",
+    "QualificationSummary": "...",
+    "MissionName": "...",
+    "ReportDate": "...",
+    "EndDate": "...",
+    "Location": "..."
+  }
+]

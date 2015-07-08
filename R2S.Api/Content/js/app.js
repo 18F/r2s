@@ -30,6 +30,8 @@ var App = (function () {
     case 'home':
       homeController();
       break;
+    case 'opportunities':
+      opportunitiesController();
       break;
     case 'api':
       apiController();
@@ -87,8 +89,49 @@ var App = (function () {
     }
   };
   
+  var opportunitiesController = function () {
+    API.getOpportunitiesData(function (data) {
       var html = "";
+      
+      $.each(data, function(i, val) {
+        html += "<tr><td></td><td></td></tr>";
+        html += "<tr>";
+        html += "<td>Advertisement ID</td>";
+        html += "<td>" + val.AdvertisementID + "</td>";
+        html += "</tr>";
+        
+        html += "<tr>";
+        html += "<td>Rank Range</td>";
+        html += "<td>" + val.RankRange + "</td>";
+        html += "</tr>";
+        
+        html += "<tr>";
+        html += "<td>Qualification Summary</td>";
+        html += "<td>" + val.QualificationSummary + "</td>";
+        html += "</tr>";
+        
+        html += "<tr>";
+        html += "<td>Mission Name</td>";
+        html += "<td>" + val.MissionName + "</td>";
+        html += "</tr>";
+        
+        html += "<tr>";
+        html += "<td>Report Date</td>";
+        html += "<td>" + val.ReportDate + "</td>";
+        html += "</tr>";
+        
+        html += "<tr>";
+        html += "<td>End Date</td>";
+        html += "<td>" + val.EndDate + "</td>";
+        html += "</tr>";
+        
+        html += "<tr>";
+        html += "<td>Location</td>";
+        html += "<td>" + val.Location + "</td>";
+        html += "</tr>";
       });
+      
+      $('#opportunities-table').html(html);
     });
   };
   
@@ -101,6 +144,9 @@ var App = (function () {
     
     API.getPersonnelData(function (data) {
       $('#api-personnel').html(JSON.stringify(data, null, 2));
+    });
+    API.getOpportunitiesData(function (data) {
+      $('#api-opportunities').html(JSON.stringify(data, null, 2));
     });
     API.getClearanceData(function (data) {
       $('#api-clearance').html(JSON.stringify(data, null, 2));

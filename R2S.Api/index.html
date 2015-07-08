@@ -64,6 +64,7 @@
     <div class="content">
       
       <img src="Content/img/icons/orders.png" alt="orders"><h1>Orders</h1>
+      <p><a href="javascript:App.showView('opportunities')">Opportunities</a></p>
       <p>Current Orders</p>
       <p>Submit Orders</p>
       <p>Orders Summary</p>
@@ -116,7 +117,14 @@
         <p id="dental-status"></p>
       </div>
       
+      <!-- Opportunities view -->
+      <div id="opportunities" class="view">
         <a href="javascript:App.showView('home')">« Back</a>
+        <h1>Orders Opportunities</h1>
+        <table>
+          <tbody id="opportunities-table">
+          </tbody>
+        </table>
       </div>
       
       <!-- API view -->
@@ -126,6 +134,8 @@
         <p>Using mock data: <b id="api-using-mock-data"></b></p>
         <h2>Personnel</h2>
         <pre><code id="api-personnel"></code></pre>
+        <h2>Opportunities</h2>
+        <pre><code id="api-opportunities"></code></pre>
         <h2>Clearance</h2>
         <pre><code id="api-clearance"></code></pre>
         <h2>PHA</h2>
