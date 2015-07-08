@@ -91,7 +91,63 @@ var App = (function () {
   
   var opportunitiesController = function () {
     API.getOpportunitiesData(function (data) {
-      var html = "";
+
+        var html = "";
+
+        // START: Mike's multi-column view
+
+        // Format header row
+        // TODO: This should use common css style to applied across entire interface
+        // TODO: Not sure why background color is not working
+        //html += "<tbody align=\"center\" style=\"font-weight:bold; background-color:#9D9696 bgcolor:#9D9696\">";
+
+        // Table titles must match order of cells below in for loop
+        html += "<tr>";
+        html += "<td>ID</td>";
+        html += "<td>Ranks</td>";
+        html += "<td>Qualifications</td>";
+        html += "<td>Mission Name</td>";
+        html += "<td>Report Date</td>";
+        html += "<td>End Data</td>";
+        html += "<td>Location</td>";
+        html += "</tr>";
+
+        // Close out format for header row
+       // html += "</tbody>"
+
+
+        $.each(data, function (i, val) {
+            // var opportunity = new OpportunityModel() { AdvertisementID = advertisementID, RankRange = rankRange, QualificationSummary = qualificationSummary, MissionName = missionName, ReportDate = startDate, EndDate = endDate, Location = location };
+
+            html += "<tr>";
+            html += "<td>" + val.AdvertisementID + "</td>";
+            html += "<td>" + val.RankRange + "</td>";
+            html += "<td>" + val.QualificationSummary + "</td>";
+            html += "<td>" + val.MissionName + "</td>";
+
+            // TODO: Should make this a function
+            var dateObject = new Date(parseInt(val.ReportDate.substring(6)));
+            var dateString = dateObject.toLocaleDateString();
+            html += "<td>" + dateString + "</td>";
+
+            // TODO: Should make this a function
+            dateObject = new Date(parseInt(val.EndDate.substring(6)));
+            dateString = dateObject.toLocaleDateString();
+            html += "<td>" + dateString + "</td>";
+
+            html += "<td>" + val.Location + "</td>";
+            html += "</tr>";
+        });
+       // html += "</table>";
+
+
+
+
+
+        // START: Below is Tom's single column view
+        /*
+
+
       
       $.each(data, function(i, val) {
         html += "<tr><td></td><td></td></tr>";
@@ -131,6 +187,7 @@ var App = (function () {
         html += "</tr>";
       });
       
+      */
       $('#opportunities-table').html(html);
     });
   };
