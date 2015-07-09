@@ -70,7 +70,17 @@ var API = (function () {
    * Get opportunities data
    */
   var getOpportunitiesData = function (callback) {
-    $.getJSON(baseURL + "/Opportunities", function (data) {
+
+      // Failed
+      //var strMethodUrl = '@Url.Action(  "Index", "Opportunities")';
+
+      // Worked
+      // var strMethodUrl = "./apps/r2s/Opportunities/Index"
+      var strMethodUrl = "./" + baseURL + "/Opportunities/Index";
+
+     // $.getJSON("../" + baseURL + "/Opportunities", function (data) {
+      $.getJSON(strMethodUrl, function (data) {
+
       opportunities = data;
       callback(opportunities);
     })
