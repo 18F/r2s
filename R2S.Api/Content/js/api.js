@@ -76,7 +76,7 @@ var API = (function () {
 
       // Worked
       // var strMethodUrl = "./apps/r2s/Opportunities/Index"
-      var strMethodUrl = "./" + baseURL + "/Opportunities/Index";
+      var strMethodUrl = "." + baseURL + "/Opportunities/Index";
 
      // $.getJSON("../" + baseURL + "/Opportunities", function (data) {
       $.getJSON(strMethodUrl, function (data) {
