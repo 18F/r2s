@@ -83,7 +83,7 @@ namespace R2S.Api.Controllers
 */
             // Initialize list to hold all opportunities that match from database
             var opportunities = new List<OpportunityModel>();
-/*
+
             // Will hold the final query string to send to database
             string queryString = QUERY_START;
 
@@ -223,10 +223,10 @@ namespace R2S.Api.Controllers
                 }
             }
 
-            ViewData["DebugMessages"] = debugMessages;
-*/
-            var opportunity = new OpportunityModel() { AdvertisementID = "ID_TEST", RankRange = "RANK_TEST", QualificationSummary = "QUAL_TEST", MissionName = "MISSION_TEST", ReportDate = DateTime.Now, EndDate = DateTime.Now, Location = "LOCATION_TEST" };
-            opportunities.Add(opportunity);
+//            ViewData["DebugMessages"] = debugMessages;
+
+//            var opportunity = new OpportunityModel() { AdvertisementID = "ID_TEST", RankRange = "RANK_TEST", QualificationSummary = "QUAL_TEST", MissionName = "MISSION_TEST", ReportDate = DateTime.Now, EndDate = DateTime.Now, Location = "LOCATION_TEST" };
+//            opportunities.Add(opportunity);
  
             return this.Json(opportunities, JsonRequestBehavior.AllowGet);
 
