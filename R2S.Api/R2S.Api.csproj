@@ -256,6 +256,7 @@
     <Content Include="Content\img\messaging.png" />
     <Content Include="Content\img\orders.png" />
     <Content Include="Content\img\settings.png" />
+    <Content Include="Content\js\api.js" />
     <Content Include="Content\js\jquery-2.1.4.min.js" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\normalize.css" />
@@ -340,7 +341,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51022</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51022/</IISUrl>
+          <IISUrl>http://localhost:51022/apps/r2s</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
