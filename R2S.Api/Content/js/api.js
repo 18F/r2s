@@ -71,14 +71,18 @@ var API = (function () {
    */
   var getOpportunitiesData = function (callback) {
 
-      // Failed
+
+		// Failed
       //var strMethodUrl = '@Url.Action(  "Index", "Opportunities")';
 
-      // Worked
+      // Worked (but only on localhost and not Test/QA which resulted in this URL https://private.test.nrh.navyreserve.navy.mil/apps/r2s/apps/r2s/Opportunities/Index
       // var strMethodUrl = "./apps/r2s/Opportunities/Index"
-      var strMethodUrl = "." + baseURL + "/Opportunities/Index";
+      //var strMethodUrl = "." + baseURL + "/Opportunities/Index";
 
-     // $.getJSON("../" + baseURL + "/Opportunities", function (data) {
+      // Expected to work on Test/QA but does not on localhost
+      var strMethodUrl = "./Opportunities/Index";
+
+      // $.getJSON("../" + baseURL + "/Opportunities", function (data) {
       $.getJSON(strMethodUrl, function (data) {
 
       opportunities = data;
