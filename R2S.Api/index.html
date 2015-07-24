@@ -38,7 +38,7 @@
           <span class="project-name">R2S</span>
         </a>
         
-        <a href="javascript:toggleMobileMenu();">
+        <a id="site-mobile-menu-button" href="javascript:toggleMobileMenu();">
           <div class="site-nav-mobile">
             
             <svg id="site-mobile-menu-icon-open" class="site-mobile-menu-icon" width="25px" height="20px" viewBox="0 0 25 20" stroke-width="2" stroke-linecap="square">
@@ -192,14 +192,8 @@
     }
     
     
-    window.addEventListener('resize', function (event) {
-      hideMobileMenu();
-    });
-    
-    
     // Attach FastClick
-    $('a').addClass('needsclick');
-    FastClick.attach(document.body);
+    FastClick.attach(document.getElementById('site-mobile-menu-button'));
     
   </script>
   
