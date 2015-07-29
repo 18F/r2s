@@ -81,6 +81,7 @@ namespace R2S.Api.Controllers
             debugMessages.Add(" OpportunitesController.Index() Called");
             //Response.Write("DEBUG: OpportunitesController.Index() Called");
 */
+
             // Initialize list to hold all opportunities that match from database
             var opportunities = new List<OpportunityModel>();
 
@@ -224,13 +225,25 @@ namespace R2S.Api.Controllers
             }
 
 //            ViewData["DebugMessages"] = debugMessages;
-
-//            var opportunity = new OpportunityModel() { AdvertisementID = "ID_TEST", RankRange = "RANK_TEST", QualificationSummary = "QUAL_TEST", MissionName = "MISSION_TEST", ReportDate = DateTime.Now, EndDate = DateTime.Now, Location = "LOCATION_TEST" };
-//            opportunities.Add(opportunity);
  
             return this.Json(opportunities, JsonRequestBehavior.AllowGet);
 
             //return View();
         }
+
+        // GET: Opportunties
+        public ActionResult DummyData()
+        {
+
+            var opportunities = new List<OpportunityModel>();
+
+
+            var opportunity = new OpportunityModel() { AdvertisementID = "ID_TEST", RankRange = "RANK_TEST", QualificationSummary = "QUAL_TEST", MissionName = "MISSION_TEST", ReportDate = DateTime.Now, EndDate = DateTime.Now, Location = "LOCATION_TEST" };
+            opportunities.Add(opportunity);
+ 
+            return this.Json(opportunities, JsonRequestBehavior.AllowGet);
+
+        }
     }
 }
+
