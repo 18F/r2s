@@ -83,7 +83,11 @@ var API = (function () {
 
       // Expected to work on Test/QA but does not on localhost
       //var strMethodUrl = "./Opportunities/Index";
-      var strMethodUrl = "./Opportunities/DummyData";
+      //var strMethodUrl = "./Opportunities/DummyData";
+
+
+      var strMethodUrl = '@Url.Action("DummyData","Opportunities")';
+
 
       // $.getJSON("../" + baseURL + "/Opportunities", function (data) {
       $.getJSON(strMethodUrl, function (data) {
