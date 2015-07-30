@@ -82,18 +82,32 @@ var API = (function () {
       //var strMethodUrl = "." + baseURL + "/Opportunities/Index";
 
       // Expected to work on Test/QA but does not on localhost
-      var strMethodUrl = "./Opportunities/Index";
-      //var strMethodUrl = "./Opportunities/DummyData";
+      //var strMethodUrl = "./Opportunities/Index";
+      var strMethodUrl = "./Opportunities/DummyData";
 
       // $.getJSON("../" + baseURL + "/Opportunities", function (data) {
       $.getJSON(strMethodUrl, function (data) {
 
-      opportunities = data;
-      callback(opportunities);
-    })
-    .fail(function() {
-      callback(opportunities);
-    });
+         opportunities = data;
+         callback(opportunities);
+      })
+      // Using jQuery interface as of v1.8 (https://api.jquery.com/jquery.getjson/)
+      .done(function() {
+          var debugString = "getOpportunitiesData:$.getJSON.done";
+          console.log(debugString);
+          alert(debugString);
+      })
+      .fail(function() {
+          var debugString = "getOpportunitiesData:$.getJSON.fail";
+          console.log(debugString);
+          alert(debugString);
+      })
+      .always(function() {
+          var debugString = "getOpportunitiesData:$.getJSON.always";
+          console.log(debugString);
+          alert(debugString);
+      });
+
   };
   
   /*
